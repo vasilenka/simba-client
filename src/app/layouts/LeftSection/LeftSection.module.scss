@@ -1,0 +1,12 @@
+@import '~invoker-tokens/index.scss';
+
+.root {
+  width: 15vw;
+  overflow-y: scroll;
+  bottom: 0;
+}
+
+.fixed {
+  position: fixed;
+  left: 0;
+}
