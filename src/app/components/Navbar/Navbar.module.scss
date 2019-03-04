@@ -1,14 +1,14 @@
 @import 'invoker-tokens/index.scss';
 
 .root {
-  background: $brand-primary-200;
+  background: $light-alpha-100;
   position: sticky;
   top: 0;
   left: 0;
   right: 0;
-  padding: $space-vertical-sm;
   composes: container-bleed from global;
   z-index: 99999;
+  box-shadow: 0px 1px 0px 0px rgba(0,0,0,.10);
 }
 
 .container {
@@ -16,6 +16,16 @@
   justify-content: space-between;
   align-items: center;
   display: flex;
+}
+
+.primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.secondary {
+
 }
 
 .brand {
@@ -29,6 +39,24 @@
 .logo {
   max-height: 20px;
   margin: $space-inline-sm;
+}
+
+.menu {
+  display: inline-flex;
+  padding: $space-horizontal-m;
+}
+
+.linkContainer {
+  display: inline-flex;
+  padding: $space-ml 0;
+}
+
+.activeLinkContainer {
+  box-shadow: inset 0px -3px 0px 0px $brand-primary-200;
+}
+
+.link {
+  color: $dark-alpha-70
 }
 
 .name {

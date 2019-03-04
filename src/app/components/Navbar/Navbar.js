@@ -1,23 +1,47 @@
 import styles from './Navbar.module.scss';
 import React from 'react';
-import classnames from 'classnames';
+import cx from 'classnames';
+import {NavLink} from 'react-router-dom'
 
 import { ReactComponent as Logo } from './mid.svg';
-import { ReactComponent as Github } from './github.svg';
+import Text from '../Text/Text';
 
 const Navbar = ({ className, ...restProps }) => {
   return (
-    <div className={classnames(styles.root)}>
-      <div className={classnames(styles.container)}>
-        <div className={styles.brand}>
-          <Logo className={styles.logo} />
+    <div className={cx(styles.root)}>
+      <div className={cx(styles.container)}>
+        <div className={styles.primary}>
+          <div className={styles.brand}>
+            <NavLink exact to="/">
+              <Logo className={styles.logo} />
+            </NavLink>
+          </div>
+          <div className={cx(styles.menus)}>
+            <div className={styles.menu}>
+              <NavLink to="/reports" className={styles.linkContainer} activeClassName={styles.activeLinkContainer}>
+                <Text heading6 className={styles.link}>
+                  Reports & Missions
+                </Text>
+              </NavLink>
+            </div>
+            <div className={styles.menu}>
+              <NavLink to="/users" className={styles.linkContainer} activeClassName={styles.activeLinkContainer}>
+                <Text heading6 className={styles.link}>
+                  Users
+                </Text>
+              </NavLink>
+            </div>
+            <div className={styles.menu}>
+              <NavLink to="/request" className={styles.linkContainer} activeClassName={styles.activeLinkContainer}>
+                <Text heading6 className={styles.link}>
+                  Request
+                </Text>
+              </NavLink>
+            </div>
+          </div>
         </div>
-        <a
-          href="https://github.com/vasilenka/invoker"
-          className={styles.githubLink}
-        >
-          <Github className={styles.github} />
-        </a>
+        <div className={styles.secondary}>
+        </div>
       </div>
     </div>
   );

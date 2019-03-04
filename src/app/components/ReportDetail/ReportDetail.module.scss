@@ -1,0 +1,62 @@
+@import 'invoker-tokens/index.scss';
+
+.root {
+  display: inline-flex;
+  width: 100%;
+}
+
+.details {
+  width: 55%;
+  max-width: 55%;
+  padding: $space-ll;
+}
+
+.map {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  will-change: transform;
+  width: 45%;
+}
+
+.image {
+  border-radius: 8px;
+}
+
+.profileContainer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.profileImageContainer {
+  width: 48px;
+  height: 48px;
+  margin: $space-inline-sm;
+}
+
+.profileImage {
+  border-radius: 9999px;
+}
+
+.name {
+  color: $dark-alpha-70;
+}
+
+.role {
+  color: $dark-alpha-50;
+  text-transform: capitalize;
+}
+
+.reportImagesContainer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.reportImage {
+  width: 120px;
+  height: 120px;
+  margin-right: 12px;
+}

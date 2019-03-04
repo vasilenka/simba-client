@@ -1,0 +1,25 @@
+@import 'invoker-tokens/index.scss';
+
+.root {
+  display: block;
+}
+
+.pageHeading {
+  margin: $space-vertical-l;
+}
+
+.menu {
+  margin: $space-inline-l;
+}
+
+.panels {
+  padding: $space-vertical-ll;
+}
+
+.badge {
+  margin-left: $space-xs;
+}
+
+.mainContainer {
+  padding-top: $space-l;
+}

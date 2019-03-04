@@ -2,10 +2,13 @@
 
 .root {
   cursor: pointer;
+  padding: $space-vertical-ml;
+  color: $dark-alpha-70;
 }
 
 .active {
-  color: $brand-jeans-200;
+  color: $brand-primary-200;
+  box-shadow: 0px 1px 0px 0px $brand-primary-200, inset 0px -1px 0px 0px $brand-primary-200;
 }
 
 .disabled {
