@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
 import styles from './App.module.scss'
 import classnames from 'classnames'
 
-import Homepage from './pages/Homepage/Homepage'
 import UserPage from './pages/UserPage/UserPage'
 import ReportDetail from './components/ReportDetail/ReportDetail'
 import ReportPage from './pages/ReportPage/ReportPage'
 import RequestPage from './pages/RequestPage/RequestPage'
+import UserDetail from './components/UserDetail/UserDetail';
 
 class App extends Component {
   render() {
@@ -16,12 +16,13 @@ class App extends Component {
         <Router>
           <React.Fragment>
             <React.Fragment>
-              <Route exact path="/" component={Homepage} />
+              <Route exact path="/" render={() => <Redirect to={`/reports/active`}/>}/>
               <Route path="/reports" component={ReportPage} />
               <Route exact path={`/active/:reportId`} component={ReportDetail} />
               <Route exact path={`/missions/:reportId`} component={ReportDetail} />
               <Route exact path={`/completed/:reportId`} component={ReportDetail} />
               <Route exact path="/users" component={UserPage} />
+              <Route exact path="/users/:id" component={UserDetail} />
               <Route exact path="/request" component={RequestPage} />
             </React.Fragment>
           </React.Fragment>

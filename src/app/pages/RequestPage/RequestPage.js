@@ -1,5 +1,5 @@
 import styles from './RequestPage.module.scss'
-import React, { Component } from 'react'
+import React from 'react'
 import cx from 'classnames'
 
 import Text from '../../components/Text/Text'
@@ -22,6 +22,7 @@ const RequestPage = ({
   }) => {
 
   let [fireman, setFireman] = React.useState()
+  let [newRequest, setNewRequest] = React.useState()
   let [volunteer, setVolunteer] = React.useState()
   let [admin, setAdmin] = React.useState()
 
@@ -45,7 +46,21 @@ const RequestPage = ({
 
   React.useEffect(() => {
     fetchUser()
+    socket.on('new_request', (request) => {
+      setNewRequest(request)
+    })
+    return function cleanup() {
+      socket.on('new_request', (request) => {
+        setNewRequest(request)
+      })
+    }
   }, [])
+
+  React.useEffect(() => {
+    if(newRequest) {
+      fetchUser()
+    }
+  }, [newRequest])
 
   return (
     <React.Fragment>
@@ -86,8 +101,8 @@ const RequestPage = ({
                 <TabPanel>
                   {
                     volunteer && volunteer.length > 0
-                      ? volunteer.map((volunteer, index) =>
-                        <UserCard key={index} src={volunteer.profileUrl} role={volunteer.role} name={volunteer.name} />
+                      ? volunteer.map(volunteer =>
+                        <UserCard key={volunteer._id} id={volunteer._id} src={volunteer.profileUrl} role={volunteer.role} name={volunteer.name} />
                       )
                       : <Text heading4 component="h2">No volunteer request</Text>
                   }
@@ -95,8 +110,8 @@ const RequestPage = ({
                 <TabPanel>
                   {
                     fireman && fireman.length > 0
-                      ? fireman.map((fireman, index) =>
-                        <UserCard key={index} src={fireman.profileUrl} role={fireman.role} name={fireman.name} />
+                      ? fireman.map(fireman =>
+                        <UserCard key={fireman._id} id={fireman._id} src={fireman.profileUrl} role={fireman.role} name={fireman.name} />
                       )
                       : <Text heading4 component="h2">No fireman request</Text>
                   }
@@ -104,8 +119,8 @@ const RequestPage = ({
                 <TabPanel>
                   {
                     admin && admin.length > 0
-                      ? admin.map((admin, index) =>
-                        <UserCard key={index} src={admin.profileUrl} role={admin.role} name={admin.name} />
+                      ? admin.map(admin =>
+                        <UserCard key={admin._id} id={admin._id} src={admin.profileUrl} role={admin.role} name={admin.name} />
                       )
                       : <Text heading4 component="h2">No admin request</Text>
                   }

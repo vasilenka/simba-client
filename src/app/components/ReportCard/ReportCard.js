@@ -4,10 +4,10 @@ import cx from 'classnames'
 import dayjs from 'dayjs'
 import {Link} from 'react-router-dom'
 
-import Map from '../Map/Map'
+// import Map from '../Map/Map'
 
 import Text from '../Text/Text';
-import Image from '../Image/Image';
+// import Image from '../Image/Image';
 
 const ReportCard = ({
   className,
@@ -24,19 +24,9 @@ const ReportCard = ({
   ...restProps
   }) => {
 
-  const cardContainer = React.useRef()
-
-  let [height, setHeight] = React.useState()
-
-  React.useEffect(()=>{
-    if(cardContainer.current) {
-      setHeight(cardContainer.current.clientHeight)
-    }
-  }, [cardContainer])
-
   return (
     <Link to={`/${type}/${id}`}>
-      <div className={cx(styles.root)} ref={cardContainer}>
+      <div className={cx(styles.root)}>
         <div className={styles.text}>
           <div className={styles.reporter}>
             <div className={styles.profileContainer}>

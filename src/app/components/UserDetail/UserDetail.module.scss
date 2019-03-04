@@ -1,0 +1,39 @@
+@import 'invoker-tokens/index.scss';
+
+.root {
+  display: inline-flex;
+  width: 100%;
+}
+
+.details {
+  width: calc(100% - 264px);
+  padding-right: 10%;
+}
+
+.header {
+  padding: $space-vertical-ml;
+}
+
+.name {
+  color: $dark-alpha-70;
+  margin: $space-stack-sm;
+}
+
+.role {
+  text-transform: uppercase;
+  color: $dark-alpha-50;
+}
+
+.picture {
+  max-width: fit-content;
+}
+
+.profileImageContainer {
+  margin-top: 64px;
+  width: 264px;
+  height: 264px;
+}
+
+.profileImage {
+  border-radius: 8px;
+}

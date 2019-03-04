@@ -11,6 +11,17 @@
   padding: $space-ll;
 }
 
+.header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.reportStatus {
+  text-transform: capitalize;
+}
+
 .map {
   position: fixed;
   top: 0;

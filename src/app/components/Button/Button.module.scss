@@ -35,10 +35,17 @@
 .icon {
   width: 20px;
   height: 20px;
-  margin: $space-inline-s;
   display: inline-flex;
   justify-content: center;
   align-items: center;
+}
+
+.withChildren {
+  margin: $space-inline-s;
+}
+
+.noChildren {
+  margin: 0;
 }
 
 .medium {

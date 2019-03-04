@@ -1,0 +1,17 @@
+@import 'invoker-tokens/index.scss';
+
+.root {
+  padding: $space-inset-ml;
+  border: 1px solid rgba(0,0,0,.10);
+  border-radius: 3px;
+}
+
+.title {
+  color: $dark-alpha-70;
+  margin: $space-stack-s;
+}
+
+.text {
+  color: $dark-alpha-70;
+  margin: $space-stack-ml;
+}

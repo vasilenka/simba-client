@@ -2,7 +2,7 @@ import styles from './ReportPage.module.scss'
 import React from 'react'
 import cx from 'classnames'
 import Text from '../../components/Text/Text'
-import {NavLink, Route, Link, Redirect} from 'react-router-dom'
+import {NavLink, Route, Redirect} from 'react-router-dom'
 
 import SocketContext from './../../context/SocketContext'
 import Navbar from '../../components/Navbar/Navbar';
@@ -42,6 +42,14 @@ const ReportPage = ({
 
   React.useEffect(() => {
     fetchReport()
+    socket.on('new_report', (report) => {
+      setNewReports(report)
+    })
+    return function cleanup() {
+      socket.on('new_report', (report) => {
+        setNewReports(report)
+      })
+    }
   }, [])
 
   React.useEffect(() => {
@@ -49,10 +57,6 @@ const ReportPage = ({
       fetchReport()
     }
   }, [newReports])
-
-  socket.on('new_report', (report) => {
-    setNewReports(report)
-  })
 
   return (
     <React.Fragment>

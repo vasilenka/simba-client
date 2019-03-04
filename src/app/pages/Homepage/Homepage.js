@@ -21,7 +21,7 @@ const Homepage = ({
         <MainContent>
           <div styles={cx(styles.root)}>
             <Text heading1 component="h1" className={styles.pageHeading}>
-              Bakar!
+              Lapor!
             </Text>
           </div>
         </MainContent>

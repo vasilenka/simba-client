@@ -6,7 +6,7 @@ import Map from '../Map/Map'
 import Button from '../Button/Button'
 import Image from '../Image/Image'
 import dayjs from 'dayjs'
-import {Link} from 'react-router-dom'
+import axios from 'axios'
 
 const ReportDetail = ({
   match,
@@ -31,13 +31,36 @@ const ReportDetail = ({
     fetchReport(match.params.reportId)
   }, [])
 
+  const setMission = id => {
+    axios.patch(`http://localhost:3000/reports/${id}`, {
+      dispatcher: '5c7d8ab3940a7c551d7b0c5e',
+      status: 'mission',
+    })
+    .then(res => res.data)
+    .then(report => setReport(report))
+    .catch(err => console.log(err))
+  }
+
+  const setCompleted = id => {
+    axios.patch(`http://localhost:3000/reports/${id}`, {
+      dispatcher: '5c7d8ab3940a7c551d7b0c5e',
+      status: 'accomplished',
+    })
+    .then(res => res.data)
+    .then(report => setReport(report))
+    .catch(err => console.log(err))
+  }
+
   return (
     <div className={cx(styles.root)}>
       {
         report && (
           <React.Fragment>
             <div className={styles.details}>
-              <Button secondary small onClick={() => history.goBack()}>Back</Button>
+              <header className={styles.header}>
+                <Button secondary small onClick={() => history.goBack()}>Back</Button>
+                <Text heading3 className={styles.reportStatus}>{report.status}</Text>
+              </header>
               <hr/>
                 <Text heading4Alt>{dayjs(report.createdAt).format('D MMMM YYYY, ')} at {dayjs(report.createdAt).format('hh:MM a')}</Text>
               <hr/>
@@ -51,20 +74,23 @@ const ReportDetail = ({
                 </div>
               </div>
               <hr/>
-              <Text>{report.address}</Text>
-              <hr/>
-              {report.keterangan && report.keterangan.length > 0 && report.keterangan.map(ket => <Text component="p" medium>"{ket}"</Text>)}
+              <Text heading4Alt>{report.address}</Text>
               <hr/>
               <div className={styles.reportImagesContainer}>
-              {report.photos && report.photos.length > 0 && report.photos.map(photo =>
-                <Text component="a" href={`https://6dcfd865.ngrok.io${photo}`} className={styles.reportImage}>
+              {report.photos && report.photos.length > 0 && report.photos.map((photo, index) =>
+                <Text key={index} component="a" href={`https://6dcfd865.ngrok.io${photo}`} className={styles.reportImage}>
                   <Image src={`https://6dcfd865.ngrok.io${photo}`} alt={report.address} fit="cover" className={styles.image}/>
                 </Text>
               )}
               </div>
               <hr/>
+              {report.keterangan && report.keterangan.length > 0 && report.keterangan.map((ket, index) => <Text component="p" key={index} medium>"{ket}"</Text>)}
+              <hr/>
               {
-                report.status === 'done' && <Button primary>Set mission</Button>
+                report.status === 'done' && <Button onClick={() => setMission(report._id)} primary>Set mission</Button>
+              }
+              {
+                report.status === 'mission' && <Button onClick={() => setCompleted(report._id)} primary>Set completed</Button>
               }
             </div>
             <Map

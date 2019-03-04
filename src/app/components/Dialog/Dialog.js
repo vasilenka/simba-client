@@ -11,6 +11,14 @@ const Dialog = ({
   className,
   ...restProps
 }) => {
+
+  React.useEffect(() => {
+    document.querySelector('body').style.overflow = 'hidden'
+    return function cleanup() {
+      document.querySelector('body').style.overflow = 'auto'
+    }
+  })
+
   return (
     <div
       className={cx({

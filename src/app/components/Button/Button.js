@@ -100,7 +100,11 @@ const Button = ({
       {...restProps}
     >
       <span className={styles.children}>
-        {icon && <span className={styles.icon}>{icon}</span>}
+        {icon && <span className={classnames({
+          [styles.icon]: true,
+          [styles.withChildren]: children,
+          [styles.noChildren]: !children,
+          })}>{icon}</span>}
         {children}
       </span>
     </button>
@@ -121,7 +125,7 @@ Button.propTypes = {
   disabled: bool,
   small: bool,
   large: bool,
-  children: node.isRequired
+  children: node
 };
 
 export default Button;
