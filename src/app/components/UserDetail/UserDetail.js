@@ -22,7 +22,7 @@ const UserDetail = ({
 
   let [user, setUser] = React.useState()
 
-  const fetchUser = id => fetch(`https://6dcfd865.ngrok.io/users/${id}`)
+  const fetchUser = id => fetch(`${process.env.REACT_APP_WEB_HOST}/users/${id}`)
     .then(data => data.json())
     .then(user => {
       setUser(user)
@@ -34,7 +34,7 @@ const UserDetail = ({
   }, [])
 
   const acceptRequest = id => {
-    axios.patch(`https://6dcfd865.ngrok.io/users/${id}`, {
+    axios.patch(`${process.env.REACT_APP_WEB_HOST}/users/${id}`, {
       requestRole: {
         role: user.requestRole.role,
         status: 'accepted'
@@ -52,9 +52,9 @@ const UserDetail = ({
   }
 
   const declineRequest = id => {
-    axios.patch(`https://6dcfd865.ngrok.io/users/${id}`, {
+    axios.patch(`${process.env.REACT_APP_WEB_HOST}/users/${id}`, {
       requestRole: {
-        role: user.requestRole,
+        role: user.requestRole.role,
         status: 'declined'
       },
       role: user.role

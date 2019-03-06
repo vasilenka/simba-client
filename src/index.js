@@ -6,7 +6,7 @@ import * as serviceWorker from './serviceWorker';
 import * as io from 'socket.io-client'
 import SocketContext from './app/context/SocketContext'
 
-const socket = io('http://localhost:3000', {
+const socket = io(`${process.env.REACT_APP_SOCKET}`, {
   path: '/live'
 })
 

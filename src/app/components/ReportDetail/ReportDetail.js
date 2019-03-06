@@ -19,7 +19,7 @@ const ReportDetail = ({
   let [report, setReport] = React.useState()
 
   const fetchReport = async id => {
-    fetch(`http://localhost:3000/reports/${id}`)
+    fetch(`${process.env.REACT_APP_WEB_HOST}/reports/${id}`)
       .then(data => data.json())
       .then(report => {
         setReport(report)
@@ -32,7 +32,7 @@ const ReportDetail = ({
   }, [])
 
   const setMission = id => {
-    axios.patch(`http://localhost:3000/reports/${id}`, {
+    axios.patch(`${process.env.REACT_APP_WEB_HOST}/reports/${id}`, {
       dispatcher: '5c7d8ab3940a7c551d7b0c5e',
       status: 'mission',
     })
@@ -42,7 +42,7 @@ const ReportDetail = ({
   }
 
   const setCompleted = id => {
-    axios.patch(`http://localhost:3000/reports/${id}`, {
+    axios.patch(`${process.env.REACT_APP_WEB_HOST}/reports/${id}`, {
       dispatcher: '5c7d8ab3940a7c551d7b0c5e',
       status: 'accomplished',
     })
@@ -78,8 +78,8 @@ const ReportDetail = ({
               <hr/>
               <div className={styles.reportImagesContainer}>
               {report.photos && report.photos.length > 0 && report.photos.map((photo, index) =>
-                <Text key={index} component="a" href={`https://6dcfd865.ngrok.io${photo}`} className={styles.reportImage}>
-                  <Image src={`https://6dcfd865.ngrok.io${photo}`} alt={report.address} fit="cover" className={styles.image}/>
+                <Text key={index} component="a" href={`${process.env.REACT_APP_WEB_HOST}${photo}`} className={styles.reportImage}>
+                  <Image src={`${process.env.REACT_APP_WEB_HOST}${photo}`} alt={report.address} fit="cover" className={styles.image}/>
                 </Text>
               )}
               </div>

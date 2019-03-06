@@ -29,7 +29,7 @@ const RequestPage = ({
   const socket = React.useContext(SocketContext)
 
   const fetchUser = async () => {
-    return fetch('http://localhost:3000/users')
+    return fetch(`${process.env.REACT_APP_WEB_HOST}/users`)
       .then(data => data.json())
       .then(users => {
         let fireman = users.filter(user => user.requestRole.role === 'fireman' && user.requestRole.status === 'pending')
@@ -47,6 +47,7 @@ const RequestPage = ({
   React.useEffect(() => {
     fetchUser()
     socket.on('new_request', (request) => {
+      console.log('New one incoming')
       setNewRequest(request)
     })
     return function cleanup() {

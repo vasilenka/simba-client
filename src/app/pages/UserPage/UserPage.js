@@ -29,7 +29,7 @@ const UserPage = ({
   let [newRequest, setNewRequest] = React.useState(null)
 
   const fetchUser = () =>
-    fetch('http://localhost:3000/users')
+    fetch(`${process.env.REACT_APP_WEB_HOST}/users`)
       .then(data => data.json())
       .then(users => {
         setReporter(users.filter(user => user.role === 'reporter'))

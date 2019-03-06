@@ -25,7 +25,7 @@ const ReportPage = ({
   let [accomplished, setAccomplished] = React.useState(null)
 
   const fetchReport = () => {
-    fetch("http://localhost:3000/reports")
+    fetch(`${process.env.REACT_APP_WEB_HOST}/reports`)
       .then(data => data.json())
       .then(reports => {
 
