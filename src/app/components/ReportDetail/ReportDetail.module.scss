@@ -3,12 +3,67 @@
 .root {
   display: inline-flex;
   width: 100%;
+  @include screen(phone) {
+    flex-direction: column-reverse;
+  }
+  @include screen(tabPortrait) {
+    flex-direction: column-reverse;
+  }
+  @include screen(tabLandscape) {
+    flex-direction: row;
+  }
+  @include screen(desktop) {
+    flex-direction: row;
+  }
+  @include screen(desktopWide) {
+    flex-direction: row;
+  }
+}
+
+.backSecondary {
+  @include screen(phone) {
+    display: none;
+  }
+  @include screen(tabPortrait) {
+    display: none;
+  }
+  @include screen(tabLandscape) {
+    display: initial;
+  }
+  @include screen(desktop) {
+    display: initial;
+  }
+  @include screen(desktopWide) {
+    display: initial;
+  }
 }
 
 .details {
-  width: 55%;
-  max-width: 55%;
-  padding: $space-ll;
+  @include screen(phone) {
+    width: 100%;
+    max-width: 100%;
+    padding: $space-ml;
+  }
+  @include screen(tabPortrait) {
+    width: 100%;
+    max-width: 100%;
+    padding: $space-ml;
+  }
+  @include screen(tabLandscape) {
+    width: 55%;
+    max-width: 55%;
+    padding: $space-ll;
+  }
+  @include screen(desktop) {
+    width: 55%;
+    max-width: 55%;
+    padding: $space-ll;
+  }
+  @include screen(desktopWide) {
+    width: 55%;
+    max-width: 55%;
+    padding: $space-ll;
+  }
 }
 
 .header {
@@ -23,12 +78,58 @@
 }
 
 .map {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
   will-change: transform;
-  width: 45%;
+  @include screen(phone) {
+    position: unset;
+    display: block;
+    width: 100%;
+    height: 55vh;
+  }
+  @include screen(tabPortrait) {
+    position: unset;
+    display: block;
+    width: 100%;
+    height: 55vh;
+  }
+  @include screen(tabLandscape) {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 45%;
+  }
+  @include screen(desktop) {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 45%;
+  }
+  @include screen(desktopWide) {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 45%;
+  }
+}
+
+.mapElement {
+  @include screen(phone) {
+    height: 100%;
+  }
+  @include screen(tabPortrait) {
+    height: 100%;
+  }
+  @include screen(tabLandscape) {
+    height: 100vh;
+  }
+  @include screen(desktop) {
+    height: 100vh;
+  }
+  @include screen(desktopWide) {
+    height: 100vh;
+  }
 }
 
 .image {
@@ -77,4 +178,23 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.backPrimary {
+  padding: $space-ml;
+  @include screen(phone) {
+    display: block;
+  }
+  @include screen(tabPortrait) {
+    display: block;
+  }
+  @include screen(tabLandscape) {
+    display: none;
+  }
+  @include screen(desktop) {
+    display: none;
+  }
+  @include screen(desktopWide) {
+    display: none;
+  }
 }

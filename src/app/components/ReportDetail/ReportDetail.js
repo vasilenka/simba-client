@@ -68,7 +68,7 @@ const ReportDetail = ({
           <React.Fragment>
             <div className={styles.details}>
               <header className={styles.header}>
-                <Button secondary small onClick={() => history.goBack()}>Back</Button>
+                <Button className={styles.backSecondary} secondary small onClick={() => history.goBack()}>Back</Button>
                 <Text heading3 className={styles.reportStatus}>
                 {
                   report.status === 'active' ? 'Active report'
@@ -147,8 +147,11 @@ const ReportDetail = ({
               googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyBNREXU2Q7SUSMuBdiDxHRzY_SRd-_QVGc&v=3.exp&libraries=geometry,drawing,places"
               containerElement={<div className={styles.map} />}
               loadingElement={<div style={{ height: `100%` }} />}
-              mapElement={<div style={{ height: `100vh`}} />}
+              mapElement={<div className={styles.mapElement}/>}
               />
+            <div className={styles.backPrimary}>
+              <Button secondary small onClick={() => history.goBack()}>Back</Button>
+            </div>
           </React.Fragment>
         )
       }
