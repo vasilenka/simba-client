@@ -12,6 +12,7 @@ import Spinner from '../Spinner/Spinner'
 import Close from '../../icons/Close/Close'
 import RoleRequest from '../RoleRequest/RoleRequest'
 import ReportCard from '../ReportCard/ReportCard';
+import Map from '../Map/Map';
 
 const UserDetail = ({
   className,
@@ -112,61 +113,76 @@ const UserDetail = ({
                     />
               }
               {
-                user.registerProcess === 'done'
-                  ?   (<div style={{marginBottom: '48px'}}>
-                        <Text heading3 component="h2" className={styles.subheading}>Personal information</Text>
+                user.registerProcess === 'done' && user.status === 'pending'
+                  ?   (<div style={{paddingBottom: '64px'}}>
+                        <Text heading2 component="h2" className={styles.subheading}>Personal information</Text>
                         <div className={styles.personalInformation}>
                           <div className={styles.profileInfo}>
-                            <Text className={styles.infoPoint} medium>Nama</Text>
+                            <Text className={styles.infoPoint} small>Nama</Text>
                             <Text className={styles.infoValue} heading5>{user.fullName}</Text>
                           </div>
                           <div className={styles.profileInfo}>
-                            <Text className={styles.infoPoint} medium>Jenis kelamin</Text>
+                            <Text className={styles.infoPoint} small>Jenis kelamin</Text>
                             <Text className={styles.infoValue} heading5>{user.gender}</Text>
                           </div>
                           <div className={styles.profileInfo}>
-                            <Text className={styles.infoPoint} medium>Alamat</Text>
-                            <Text className={styles.infoValue} heading5>{user.address}</Text>
-                          </div>
-                          <div className={styles.profileInfo}>
-                            <Text className={styles.infoPoint} medium>Tanggal lahir</Text>
+                            <Text className={styles.infoPoint} small>Tanggal lahir</Text>
                             <Text className={styles.infoValue} heading5>{dayjs(user.birthDate).format('DD MMMM YYYY')}</Text>
                           </div>
                           <div className={styles.profileInfo}>
-                            <Text className={styles.infoPoint} medium>Foto KTP</Text>
+                            <Text className={styles.infoPoint} small>Alamat</Text>
                             <div className={styles.infoValue}>
-                              <Text component="a" href={`${process.env.REACT_APP_WEB_HOST}${user.idUrl}`}>
-                                <div style={{width: '96px', height: '72px'}}>
-                                  <Image className={styles.ktpImage} src={`${process.env.REACT_APP_WEB_HOST}${user.idUrl}`} fit="cover"/>
-                                </div>
-                              </Text>
+                              <Text heading5 component="p">{user.address}</Text>
+                              <Map
+                                lat={Number(user.latitude)}
+                                long={Number(user.longitude)}
+                                isMarkerShown
+                                zoom={17}
+                                googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyBNREXU2Q7SUSMuBdiDxHRzY_SRd-_QVGc&v=3.exp&libraries=geometry,drawing,places"
+                                containerElement={<div style={{
+                                  willChange: 'transform',
+                                  width: '100%',
+                                }} />}
+                                loadingElement={<div style={{ height: `100%` }} />}
+                                mapElement={<div style={{ height: `200px`}} />}
+                                />
                             </div>
                           </div>
-                          <footer className={cx(styles.validateUser)}>
-                            <Text heading4 component="h3">Verify user account?</Text>
+                          <div className={styles.profileInfo}>
+                            <Text className={styles.infoPoint} small>Foto KTP</Text>
+                            <Text className={styles.infoValue} component="a" style={{display: 'block', alignSelf: 'flex-start'}} href={`${process.env.REACT_APP_WEB_HOST}${user.idUrl}`}>
+                              <div style={{width: '100%', height: '200px'}}>
+                                <Image className={styles.ktpImage} src={`${process.env.REACT_APP_WEB_HOST}${user.idUrl}`} fit="cover"/>
+                              </div>
+                            </Text>
+                          </div>
+                          <footer className={cx(styles.validateUser)} style={{display: 'inline-flex', width: '100%', justifyContent: 'space-between', alignItems: 'center'}}>
+                            <Text heading4 component="h3" className={styles.smallHeading}>Verify user data?</Text>
                             <div>
-                              <Button style={{ marginRight: '12px' }} small primaryAlt>Invalid</Button>
-                              <Button small primary>Valid</Button>
+                              <Button small secondaryAlt style={{ marginRight: '12px' }}>Data invalid</Button>
+                              <Button small primary>Data valid</Button>
                             </div>
                           </footer>
                         </div>
                       </div>)
                   : <Text medium component="p">User belum registrasi akun</Text>
               }
-              <div>
-                <Text heading3 component="h2" className={styles.subheading}>User activities</Text>
-                {reports && mission && invalid && <div className={styles.listContainer}>
-                  <Text medium component="h2" className={styles.list}>
-                    Total Reports: <Text heading5 className={styles.point}>{reports.length}</Text>
-                  </Text>
-                  <Text medium component="h2" className={styles.list}>
-                    Total Missions: <Text heading5 className={styles.point}>{mission.length}</Text>
-                  </Text>
-                  <Text medium component="h2" className={styles.list}>
-                    Total Invalid Reports: <Text heading5 className={styles.point}>{invalid.length}</Text>
-                  </Text>
+              <div style={{paddingBottom: '48px'}}>
+                <div className={cx(styles.activitesHeader)}>
+                  <Text heading2 component="h2" style={{ color: 'rgb(72,72,72)'}}>Activities</Text>
+                  {reports && mission && invalid && <div className={styles.listContainer}>
+                    <Text medium component="h2" className={styles.list}>
+                      Total Reports: <Text heading5 className={styles.point}>{reports.length}</Text>
+                    </Text>
+                    <Text medium component="h2" className={styles.list}>
+                      Total Missions: <Text heading5 className={styles.point}>{mission.length}</Text>
+                    </Text>
+                    <Text medium component="h2" className={styles.list}>
+                      Total Invalid Reports: <Text heading5 className={styles.point}>{invalid.length}</Text>
+                    </Text>
                   </div>
                 }
+                </div>
                 {reports && reports.length > 0
                   ? reports.map(report =>
                     <ReportCard

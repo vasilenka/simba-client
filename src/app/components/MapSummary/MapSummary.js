@@ -4,9 +4,9 @@ import cx from 'classnames'
 
 import Button from '../Button/Button'
 import Container from '../../layouts/Container/Container'
-import Text from '../Text/Text';
-import MonthSelector from '../MonthSelector/MonthSelector';
-import YearSelector from '../YearSelector/YearSelector';
+import Text from '../Text/Text'
+import MonthSelector from '../MonthSelector/MonthSelector'
+import YearSelector from '../YearSelector/YearSelector'
 
 const MapSummary = ({
   className,

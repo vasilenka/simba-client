@@ -54,7 +54,7 @@
 }
 
 .profileInfo {
-  padding: $space-vertical-s;
+  padding: $space-vertical-sm;
   border-bottom: 1px solid $dark-alpha-20;
   display: flex;
   width: 100%;
@@ -77,18 +77,13 @@
 
 .validateUser {
   padding-top: $space-ml;
-  display: inline-flex;
   width: 100%;
-  align-items: center;
-  justify-content: space-between;
 }
 
 .listContainer {
   display: inline-flex;
-  width: 100%;
   align-items: baseline;
-  justify-content: flex-start;
-  margin: $space-stack-ml;
+  justify-content: flex-end;
 }
 
 .list {
@@ -98,4 +93,16 @@
 
 .point {
   color: $dark-alpha-70;
+}
+
+.smallHeading {
+  color: $dark-alpha-70;
+}
+
+.activitesHeader {
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: baseline;
+  width: 100%;
+  margin: $space-stack-l;
 }

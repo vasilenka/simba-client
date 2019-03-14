@@ -3,8 +3,10 @@ import React from 'react';
 import cx from 'classnames';
 import {NavLink} from 'react-router-dom'
 
-import { ReactComponent as Logo } from './mid.svg';
+// import { ReactComponent as Logo } from './mid.svg';
+import dlogo from './dlogo.png'
 import Text from '../Text/Text';
+import Image from '../Image/Image';
 
 const Navbar = ({ className, ...restProps }) => {
   return (
@@ -13,7 +15,8 @@ const Navbar = ({ className, ...restProps }) => {
         <div className={styles.primary}>
           <div className={styles.brand}>
             <NavLink exact to="/">
-              <Logo className={styles.logo} />
+              {/* <Logo className={styles.logo} /> */}
+              <Image src={dlogo} naturalWidth={1153 } alt="darurat! app" naturalHeight={320} containerClass={styles.logo}/>
             </NavLink>
           </div>
           <div className={cx(styles.menus)}>

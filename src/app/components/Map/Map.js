@@ -11,7 +11,7 @@ const Map = withScriptjs(withGoogleMap((props) =>
       streetViewControl: false,
       rotateControl: false,
       fullscreenControl: true,
-      gestureHandling: 'greedy'
+      gestureHandling: 'cooperative'
     }}
   >
     {props.isMarkerShown && <Marker position={{ lat: props.lat, lng: props.long }} />}
