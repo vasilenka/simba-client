@@ -12,7 +12,7 @@ const RoleRequest = ({
   ...restProps
   }) => {
   return (
-    <div className={cx(styles.root)}>
+    <div className={cx(styles.root)} {...restProps}>
       <Text heading3 component="h3" className={styles.title}>Role request</Text>
       <Text large component="p" className={styles.text}>This user is requesting to be <Text heading4Alt>{role}</Text></Text>
       <div>

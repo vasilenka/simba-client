@@ -15,27 +15,27 @@ const MonthSelector = ({
   let options = [
     {
       label: 'January',
-      value: 1
+      value: 0
     },
     {
       label: 'February',
-      value: 2
+      value: 1
     },
     {
       label: 'March',
-      value: 3
+      value: 2
     },
     {
       label: 'April',
-      value: 4
+      value: 3
     },
     {
       label: 'May',
-      value: 5
+      value: 4
     },
     {
       label: 'June',
-      value: 6
+      value: 5
     },
     {
       label: 'July',
@@ -43,23 +43,23 @@ const MonthSelector = ({
     },
     {
       label: 'August',
-      value: 8
+      value: 7
     },
     {
       label: 'September',
-      value: 9
+      value: 8
     },
     {
       label: 'October',
-      value: 10
+      value: 9
     },
     {
       label: 'November',
-      value: 11
+      value: 10
     },
     {
       label: 'December',
-      value: 12
+      value: 11
     },
   ]
 

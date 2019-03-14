@@ -29,14 +29,18 @@ const SummaryPage = ({
   ...restProps,
   }) => {
 
-  const [newReports, setNewReports] = React.useState()
   const socket = React.useContext(SocketContext)
 
+  const monthlyAmount = (month, amount) => ({"x": month, "y": amount})
+
+  let [newReports, setNewReports] = React.useState()
   let [done, setDone] = React.useState(null)
   let [mission, setMission] = React.useState(null)
   let [accomplished, setAccomplished] = React.useState(null)
 
   let [show, setShow] = React.useState(null)
+
+  let [yearReports, setYearReports] = React.useState()
 
   const fetchReport = () => {
     fetch(`${process.env.REACT_APP_WEB_HOST}/reports`)
@@ -54,6 +58,15 @@ const SummaryPage = ({
       .catch(err => console.log('ERR: ', err))
   }
 
+  const fetchReportYear = year => {
+    fetch(`${process.env.REACT_APP_WEB_HOST}/reports/year/${year}`)
+      .then(data => data.json())
+      .then(reports => {
+        setYearReports(reports.filter(report => report.status !== "cancelled" && report.status !== "pending"))
+      })
+      .catch(err => console.log('ERR: ', err))
+  }
+
   React.useEffect(() => {
     if(done && !show) {
       setShow(done)
@@ -62,6 +75,7 @@ const SummaryPage = ({
 
   React.useEffect(() => {
     fetchReport()
+    fetchReportYear(2019)
     socket.on('new_report', (report) => {
       setNewReports(report)
     })
@@ -77,6 +91,197 @@ const SummaryPage = ({
       fetchReport()
     }
   }, [newReports])
+
+  let [reportMonthData, setReportMonthData] = React.useState()
+
+  React.useEffect(() => {
+    if(reportMonthData) {
+      console.log(reportMonthData)
+    }
+  }, [reportMonthData])
+
+  React.useEffect(() => {
+    if(yearReports) {
+      let jan = monthlyAmount("Jan", yearReports.filter(report => report.monthCreated === 0).length)
+      let feb = monthlyAmount("Feb", yearReports.filter(report => report.monthCreated === 1).length)
+      let mar = monthlyAmount("Mar", yearReports.filter(report => report.monthCreated === 2).length)
+      let apr = monthlyAmount("Apr", yearReports.filter(report => report.monthCreated === 3).length)
+      let may = monthlyAmount("May", yearReports.filter(report => report.monthCreated === 4).length)
+      let jun = monthlyAmount("Jun", yearReports.filter(report => report.monthCreated === 5).length)
+      let jul = monthlyAmount("Jul", yearReports.filter(report => report.monthCreated === 6).length)
+      let aug = monthlyAmount("Aug", yearReports.filter(report => report.monthCreated === 7).length)
+      let sep = monthlyAmount("Sep", yearReports.filter(report => report.monthCreated === 8).length)
+      let oct = monthlyAmount("Oct", yearReports.filter(report => report.monthCreated === 9).length)
+      let nov = monthlyAmount("Nov", yearReports.filter(report => report.monthCreated === 10).length)
+      let dec = monthlyAmount("Dec", yearReports.filter(report => report.monthCreated === 11).length)
+      setReportMonthData([jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec])
+    }
+  }, [yearReports])
+
+  let lineData = [
+    {
+      "id": "Reports",
+      "color": "hsl(136, 70%, 50%)",
+      "data": [
+        {
+          "x": "Jan",
+          "y": 208
+        },
+        {
+          "x": "Feb",
+          "y": 123
+        },
+        {
+          "x": "Mar",
+          "y": 108
+        },
+        {
+          "x": "Apr",
+          "y": 170
+        },
+        {
+          "x": "May",
+          "y": 1
+        },
+        {
+          "x": "Jun",
+          "y": 69
+        },
+        {
+          "x": "Jul",
+          "y": 213
+        },
+        {
+          "x": "Aug",
+          "y": 0
+        },
+        {
+          "x": "Sep",
+          "y": 0
+        },
+        {
+          "x": "Oct",
+          "y": 0
+        },
+        {
+          "x": "Nov",
+          "y": 0
+        },
+        {
+          "x": "Dec",
+          "y": 0
+        }
+      ]
+    },
+    {
+      "id": "Users",
+      "color": "hsl(136, 70%, 50%)",
+      "data": [
+        {
+          "x": "Jan",
+          "y": 103
+        },
+        {
+          "x": "Feb",
+          "y": 23
+        },
+        {
+          "x": "Mar",
+          "y": 110
+        },
+        {
+          "x": "Apr",
+          "y": 206
+        },
+        {
+          "x": "May",
+          "y": 56
+        },
+        {
+          "x": "Jun",
+          "y": 155
+        },
+        {
+          "x": "Jul",
+          "y": 85
+        },
+        {
+          "x": "Aug",
+          "y": 0
+        },
+        {
+          "x": "Sep",
+          "y": 0
+        },
+        {
+          "x": "Oct",
+          "y": 0
+        },
+        {
+          "x": "Nov",
+          "y": 0
+        },
+        {
+          "x": "Dec",
+          "y": 0
+        }
+      ]
+    },
+    {
+      "id": "Missions",
+      "color": "hsl(121, 70%, 50%)",
+      "data": [
+        {
+          "x": "Jan",
+          "y": 149
+        },
+        {
+          "x": "Feb",
+          "y": 267
+        },
+        {
+          "x": "Mar",
+          "y": 296
+        },
+        {
+          "x": "Apr",
+          "y": 199
+        },
+        {
+          "x": "May",
+          "y": 204
+        },
+        {
+          "x": "Jun",
+          "y": 117
+        },
+        {
+          "x": "Jul",
+          "y": 87
+        },
+        {
+          "x": "Aug",
+          "y": 0
+        },
+        {
+          "x": "Sep",
+          "y": 0
+        },
+        {
+          "x": "Oct",
+          "y": 0
+        },
+        {
+          "x": "Nov",
+          "y": 0
+        },
+        {
+          "x": "Dec",
+          "y": 0
+        }
+      ]
+    },
+  ]
 
   return (
     <React.Fragment>
@@ -109,7 +314,7 @@ const SummaryPage = ({
         </div>
       </Container>
       <Container>
-        <LineChart />
+        <LineChart data={lineData} xAxis="March 2019"/>
       </Container>
       <Container narrow className={styles.mainContainer}>
         <div className={cx(styles.root)}>

@@ -26,21 +26,18 @@ const UserDetail = ({
   let [user, setUser] = React.useState()
   let [reports, setReports] = React.useState()
 
+  let [allReports, setAllReports] = React.useState()
   let [mission, setMission] = React.useState(0)
   let [invalid, setInvalid] = React.useState(0)
 
   const fetchUser = id => fetch(`${process.env.REACT_APP_WEB_HOST}/users/${id}`)
     .then(data => data.json())
-    .then(user => {
-      setUser(user)
-    })
+    .then(user => setUser(user))
     .catch(err => console.log(err))
 
   const fetchReports = id => fetch(`${process.env.REACT_APP_WEB_HOST}/users/reports/${id}`)
     .then(data => data.json())
-    .then(reports => {
-      setReports(reports)
-    })
+    .then(reports => setReports(reports))
     .catch(err => console.log(err))
 
   React.useEffect(() => {
@@ -50,6 +47,7 @@ const UserDetail = ({
 
   React.useEffect(() => {
     if(reports) {
+      setAllReports(reports.filter(report => report.status === "mission" || report.status === "active" || report.status === "accomplished" || report.status === "invalid"))
       setMission(reports.filter(report => report.status === 'mission'))
       setInvalid(reports.filter(report => report.status === 'invalid'))
     }
@@ -110,6 +108,7 @@ const UserDetail = ({
                     role={user.requestRole.role}
                     accept={() => acceptRequest(user._id)}
                     decline={() => declineRequest(user._id)}
+                    style={{marginBottom: '48px'}}
                     />
               }
               {
@@ -159,20 +158,20 @@ const UserDetail = ({
                           <footer className={cx(styles.validateUser)} style={{display: 'inline-flex', width: '100%', justifyContent: 'space-between', alignItems: 'center'}}>
                             <Text heading4 component="h3" className={styles.smallHeading}>Verify user data?</Text>
                             <div>
-                              <Button small secondaryAlt style={{ marginRight: '12px' }}>Data invalid</Button>
-                              <Button small primary>Data valid</Button>
+                              <Button disabled small secondaryAlt style={{ marginRight: '12px' }}>Data invalid</Button>
+                              <Button disabled small primary>Data valid</Button>
                             </div>
                           </footer>
                         </div>
                       </div>)
-                  : <Text medium component="p">User belum registrasi akun</Text>
+                  :   <Text medium component="p">User belum registrasi akun</Text>
               }
               <div style={{paddingBottom: '48px'}}>
                 <div className={cx(styles.activitesHeader)}>
                   <Text heading2 component="h2" style={{ color: 'rgb(72,72,72)'}}>Activities</Text>
                   {reports && mission && invalid && <div className={styles.listContainer}>
                     <Text medium component="h2" className={styles.list}>
-                      Total Reports: <Text heading5 className={styles.point}>{reports.length}</Text>
+                      Total Reports: <Text heading5 className={styles.point}>{allReports.length}</Text>
                     </Text>
                     <Text medium component="h2" className={styles.list}>
                       Total Missions: <Text heading5 className={styles.point}>{mission.length}</Text>
@@ -183,12 +182,12 @@ const UserDetail = ({
                   </div>
                 }
                 </div>
-                {reports && reports.length > 0
-                  ? reports.map(report =>
+                {allReports && allReports.length > 0
+                  ? allReports.map(report =>
                     <ReportCard
                       key={report._id}
                       id={report._id}
-                      type={report.status === 'active' ? 'active' : report.status === 'mission' ? 'missions' : 'accomplished'}
+                      type={report.status === 'active' ? 'active' : report.status === 'mission' ? 'missions' : 'completed'}
                       name={report.reporter.name}
                       profileUrl={report.reporter.profileUrl}
                       address={report.address}
@@ -203,7 +202,7 @@ const UserDetail = ({
             </div>
             <div className={styles.picture}>
               <div className={styles.profileImageContainer}>
-                <Image className={styles.profileImage} fit="cover" src={user.profileUrl} alt={user.name}/>
+                <Image className={styles.profileImage} fit="cover" src={user.profileUrl || `${process.env.REACT_APP_DEFAULT_IMAGE}`} alt={user.name}/>
               </div>
             </div>
           </div>

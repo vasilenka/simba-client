@@ -6,182 +6,16 @@ import { ResponsiveLine } from '@nivo/line'
 
 const LineChart = ({
   className,
+  yAxis,
+  xAxis,
+  data,
   ...restProps
   }) => {
-
-  let [data, setData] = React.useState()
-
-  React.useEffect(() => {
-    setData([
-      {
-        "id": "Reports",
-        "color": "hsl(136, 70%, 50%)",
-        "data": [
-          {
-            "x": "Jan",
-            "y": 208
-          },
-          {
-            "x": "Feb",
-            "y": 123
-          },
-          {
-            "x": "Mar",
-            "y": 108
-          },
-          {
-            "x": "Apr",
-            "y": 170
-          },
-          {
-            "x": "May",
-            "y": 1
-          },
-          {
-            "x": "Jun",
-            "y": 69
-          },
-          {
-            "x": "Jul",
-            "y": 213
-          },
-          {
-            "x": "Aug",
-            "y": 0
-          },
-          {
-            "x": "Sep",
-            "y": 0
-          },
-          {
-            "x": "Oct",
-            "y": 0
-          },
-          {
-            "x": "Nov",
-            "y": 0
-          },
-          {
-            "x": "Dec",
-            "y": 0
-          }
-        ]
-      },
-      {
-        "id": "Users",
-        "color": "hsl(136, 70%, 50%)",
-        "data": [
-          {
-            "x": "Jan",
-            "y": 103
-          },
-          {
-            "x": "Feb",
-            "y": 23
-          },
-          {
-            "x": "Mar",
-            "y": 110
-          },
-          {
-            "x": "Apr",
-            "y": 206
-          },
-          {
-            "x": "May",
-            "y": 56
-          },
-          {
-            "x": "Jun",
-            "y": 155
-          },
-          {
-            "x": "Jul",
-            "y": 85
-          },
-          {
-            "x": "Aug",
-            "y": 0
-          },
-          {
-            "x": "Sep",
-            "y": 0
-          },
-          {
-            "x": "Oct",
-            "y": 0
-          },
-          {
-            "x": "Nov",
-            "y": 0
-          },
-          {
-            "x": "Dec",
-            "y": 0
-          }
-        ]
-      },
-      {
-        "id": "Missions",
-        "color": "hsl(121, 70%, 50%)",
-        "data": [
-          {
-            "x": "Jan",
-            "y": 149
-          },
-          {
-            "x": "Feb",
-            "y": 267
-          },
-          {
-            "x": "Mar",
-            "y": 296
-          },
-          {
-            "x": "Apr",
-            "y": 199
-          },
-          {
-            "x": "May",
-            "y": 204
-          },
-          {
-            "x": "Jun",
-            "y": 117
-          },
-          {
-            "x": "Jul",
-            "y": 87
-          },
-          {
-            "x": "Aug",
-            "y": 0
-          },
-          {
-            "x": "Sep",
-            "y": 0
-          },
-          {
-            "x": "Oct",
-            "y": 0
-          },
-          {
-            "x": "Nov",
-            "y": 0
-          },
-          {
-            "x": "Dec",
-            "y": 0
-          }
-        ]
-      },
-    ])
-  }, [])
 
   return (
     <div className={cx(styles.root)}>
       <ResponsiveLine
-        data={data && data}
+        data={data}
         margin={{
           "top": 50,
           "right": 30,
@@ -205,7 +39,7 @@ const LineChart = ({
           "tickSize": 5,
           "tickPadding": 5,
           "tickRotation": 0,
-          "legend": "2019",
+          "legend": "March 2019",
           "legendOffset": 36,
           "legendPosition": "middle"
         }}

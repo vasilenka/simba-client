@@ -93,7 +93,7 @@ const UserPage = ({
                   {
                     reporter && reporter.length > 0
                       ? reporter.map(reporter =>
-                        <UserCard id={reporter._id} key={reporter._id} src={reporter.profileUrl} role={reporter.role} name={reporter.name} />
+                        <UserCard id={reporter._id} key={reporter._id} src={reporter.profileUrl || `${process.env.REACT_APP_DEFAULT_IMAGE}`} role={reporter.role} name={reporter.name} />
                       )
                       : <Text heading4 component="h2">No reporter</Text>
                   }
@@ -102,7 +102,7 @@ const UserPage = ({
                   {
                     volunteer && volunteer.length > 0
                       ? volunteer.map(volunteer =>
-                        <UserCard id={volunteer._id}  key={volunteer._id} src={volunteer.profileUrl} role={volunteer.role} name={volunteer.name} />
+                        <UserCard id={volunteer._id}  key={volunteer._id} src={volunteer.profileUrl || `${process.env.REACT_APP_DEFAULT_IMAGE}`} role={volunteer.role} name={volunteer.name} />
                       )
                       : <Text heading4 component="h2">No volunteer</Text>
                   }
@@ -111,7 +111,7 @@ const UserPage = ({
                   {
                     fireman && fireman.length > 0
                       ? fireman.map(fireman =>
-                        <UserCard id={fireman._id} key={fireman._id} src={fireman.profileUrl} role={fireman.role} name={fireman.name} />
+                        <UserCard id={fireman._id} key={fireman._id} src={fireman.profileUrl || `${process.env.REACT_APP_DEFAULT_IMAGE}`} role={fireman.role} name={fireman.name} />
                       )
                       : <Text heading4 component="h2">No fireman</Text>
                   }
@@ -120,7 +120,7 @@ const UserPage = ({
                   {
                     admin && admin.length > 0
                       ? admin.map(admin =>
-                        <UserCard id={admin._id} key={admin._id} src={admin.profileUrl} role={admin.role} name={admin.name} />
+                        <UserCard id={admin._id} key={admin._id} src={admin.profileUrl || `${process.env.REACT_APP_DEFAULT_IMAGE}`} role={admin.role} name={admin.name} />
                       )
                       : <Text heading4 component="h2">No admin</Text>
                   }
