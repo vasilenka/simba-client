@@ -40,7 +40,7 @@ const LineChart = ({
           "tickPadding": 5,
           "tickRotation": 0,
           "legend": "March 2019",
-          "legendOffset": 36,
+          "legendOffset": 55,
           "legendPosition": "middle"
         }}
         axisLeft={{

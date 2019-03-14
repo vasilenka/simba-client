@@ -16,7 +16,7 @@ const YearSelector = ({
 
   React.useEffect(() => {
     if(year) {
-      console.log(year)
+      // console.log(year)
     }
   }, [year])
 

@@ -13,6 +13,7 @@ const MapSummary = ({
   setShow,
   done,
   mission,
+  invalid,
   accomplished,
   ...restProps
   }) => {
@@ -21,7 +22,7 @@ const MapSummary = ({
 
   React.useEffect(() => {
     if(month) {
-      console.log(month)
+      // console.log(month)
     }
   }, [month])
 
@@ -39,6 +40,7 @@ const MapSummary = ({
             <Button style={{marginRight: '12px'}} small secondary onClick={() => setShow(done)}>{done && done.length} Active</Button>
             <Button style={{marginRight: '12px'}} small secondary onClick={() => setShow(mission)}>{mission && mission.length} Mission</Button>
             <Button style={{marginRight: '12px'}} small secondary onClick={() => setShow(accomplished)}>{accomplished && accomplished.length} Accomplished</Button>
+            <Button style={{marginRight: '12px'}} small secondary onClick={() => setShow(invalid)}>{invalid && invalid.length} Invalid</Button>
           </div>
           <div>
             <div style={{marginRight: '12px', display: 'inline-flex'}}>
