@@ -16,18 +16,18 @@ const ReportList = ({
   return (
     <React.Fragment>
       {reports && reports.length > 0
-        ? reports.map(reports =>
+        ? reports.map(report =>
             <ReportCard
-              key={reports._id}
-              id={reports._id}
+              key={report._id}
+              id={report._id}
               type={type}
-              name={reports.reporter.name}
-              profileUrl={reports.reporter.profileUrl}
-              address={reports.address}
-              latitude={reports.latitude}
-              longitude={reports.longitude}
-              photos={reports.photos}
-              keterangan={reports.keterangan}
+              name={report.reporter.name}
+              profileUrl={report.reporter.profileUrl}
+              address={report.address}
+              latitude={report.latitude}
+              longitude={report.longitude}
+              photos={report.photos}
+              keterangan={report.keterangan}
               />
           )
         : type === 'active'

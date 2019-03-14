@@ -29,9 +29,9 @@ const ReportPage = ({
       .then(data => data.json())
       .then(reports => {
 
-        let done = reports.filter(report => report.status === 'done')
-        let mission = reports.filter(report => report.status === 'mission')
-        let accomplished = reports.filter(report => report.status === 'accomplished')
+        let done = reports.filter(report => report.status === 'active' && report.reporter)
+        let mission = reports.filter(report => report.status === 'mission' && report.reporter)
+        let accomplished = reports.filter(report => report.status === 'accomplished' && report.reporter)
 
         setDone(done)
         setMission(mission)

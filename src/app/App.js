@@ -8,6 +8,7 @@ import ReportDetail from './components/ReportDetail/ReportDetail'
 import ReportPage from './pages/ReportPage/ReportPage'
 import RequestPage from './pages/RequestPage/RequestPage'
 import UserDetail from './components/UserDetail/UserDetail';
+import SummaryPage from './pages/SummaryPage/SummaryPage';
 
 class App extends Component {
   render() {
@@ -24,6 +25,7 @@ class App extends Component {
               <Route exact path="/users" component={UserPage} />
               <Route exact path="/users/:id" component={UserDetail} />
               <Route exact path="/request" component={RequestPage} />
+              <Route exact path="/summary" component={SummaryPage} />
             </React.Fragment>
           </React.Fragment>
         </Router>

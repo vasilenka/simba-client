@@ -10,7 +10,8 @@ const Map = withScriptjs(withGoogleMap((props) =>
       scaleControl: false,
       streetViewControl: false,
       rotateControl: false,
-      fullscreenControl: true
+      fullscreenControl: true,
+      gestureHandling: 'greedy'
     }}
   >
     {props.isMarkerShown && <Marker position={{ lat: props.lat, lng: props.long }} />}

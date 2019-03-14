@@ -12,6 +12,7 @@
 
 .header {
   padding: $space-vertical-ml;
+  margin: $space-stack-ml;
 }
 
 .name {
@@ -26,14 +27,75 @@
 
 .picture {
   max-width: fit-content;
+  height: fit-content;
+  position: sticky;
+  top: 48px;
 }
 
 .profileImageContainer {
-  margin-top: 64px;
+  margin-top: 0;
   width: 264px;
   height: 264px;
 }
 
+.subheading {
+  color: $dark-alpha-70;
+  margin: $space-stack-ml;
+}
+
 .profileImage {
   border-radius: 8px;
+}
+
+.personalInformation {
+  padding: $space-inset-ml;
+  border: 1px solid $dark-alpha-20;
+  border-radius: 3px;
+}
+
+.profileInfo {
+  padding: $space-vertical-s;
+  border-bottom: 1px solid $dark-alpha-20;
+  display: flex;
+  width: 100%;
+  align-items: baseline;
+  justify-content: flex-start;
+}
+
+.infoPoint {
+  flex: 1;
+}
+
+.infoValue {
+  flex: 1.68;
+  text-transform: capitalize;
+}
+
+.ktpImage {
+  border-radius: 3px;
+}
+
+.validateUser {
+  padding-top: $space-ml;
+  display: inline-flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.listContainer {
+  display: inline-flex;
+  width: 100%;
+  align-items: baseline;
+  justify-content: flex-start;
+  margin: $space-stack-ml;
+}
+
+.list {
+  margin: $space-inline-sm;
+  color: $dark-alpha-60;
+}
+
+.point {
+  color: $dark-alpha-70;
 }

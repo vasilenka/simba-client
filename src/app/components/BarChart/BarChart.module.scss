@@ -1,0 +1,8 @@
+@import '~invoker-tokens/index.scss';
+
+.root {
+  width: 100%;
+  overflow-x: scroll;
+  height: 600px;
+  padding: $space-stack-ll;
+}

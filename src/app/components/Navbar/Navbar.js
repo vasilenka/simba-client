@@ -18,6 +18,13 @@ const Navbar = ({ className, ...restProps }) => {
           </div>
           <div className={cx(styles.menus)}>
             <div className={styles.menu}>
+              <NavLink to="/summary" className={styles.linkContainer} activeClassName={styles.activeLinkContainer}>
+                <Text heading6 className={styles.link}>
+                  Summary
+                </Text>
+              </NavLink>
+            </div>
+            <div className={styles.menu}>
               <NavLink to="/reports" className={styles.linkContainer} activeClassName={styles.activeLinkContainer}>
                 <Text heading6 className={styles.link}>
                   Reports & Missions

@@ -41,6 +41,16 @@ const ReportDetail = ({
     .catch(err => console.log(err))
   }
 
+  const setInvalid = id => {
+    axios.patch(`${process.env.REACT_APP_WEB_HOST}/reports/${id}`, {
+      dispatcher: '5c7d8ab3940a7c551d7b0c5e',
+      status: 'invalid',
+    })
+    .then(res => res.data)
+    .then(report => setReport(report))
+    .catch(err => console.log(err))
+  }
+
   const setCompleted = id => {
     axios.patch(`${process.env.REACT_APP_WEB_HOST}/reports/${id}`, {
       dispatcher: '5c7d8ab3940a7c551d7b0c5e',
@@ -59,10 +69,34 @@ const ReportDetail = ({
             <div className={styles.details}>
               <header className={styles.header}>
                 <Button secondary small onClick={() => history.goBack()}>Back</Button>
-                <Text heading3 className={styles.reportStatus}>{report.status}</Text>
+                <Text heading3 className={styles.reportStatus}>
+                {
+                  report.status === 'active' ? 'Active report'
+                    : report.status === 'mission' ? 'On-going mission'
+                      : report.status === 'accomplished' ? 'Mission accomplised'
+                        : report.status
+                }
+                </Text>
               </header>
               <hr/>
-                <Text heading4Alt>{dayjs(report.createdAt).format('D MMMM YYYY, ')} at {dayjs(report.createdAt).format('hh:MM a')}</Text>
+                {report.createdAt &&
+                  <div style={{padding: '4px 0'}}>
+                    <Text medium style={{color: '#767676' ,marginRight: '8px'}}>Reported:</Text>
+                    <Text heading5>{dayjs(report.createdAt).format('D MMMM YYYY, ')} at {dayjs(report.createdAt).format('hh:mm a')}</Text>
+                  </div>
+                }
+                {report.processedAt &&
+                  <div style={{padding: '4px 0'}}>
+                    <Text medium style={{color: '#767676' ,marginRight: '8px'}}>Processed:</Text>
+                    <Text heading5>{dayjs(report.processedAt).format('D MMMM YYYY, ')} at {dayjs(report.processedAt).format('hh:mm a')}</Text>
+                  </div>
+                }
+                {report.completedAt &&
+                  <div style={{padding: '4px 0'}}>
+                    <Text medium style={{color: '#767676' ,marginRight: '8px'}}>Accomplished:</Text>
+                    <Text heading5>{dayjs(report.completedAt).format('D MMMM YYYY, ')} at {dayjs(report.completedAt).format('hh:mm a')}</Text>
+                  </div>
+                }
               <hr/>
               <div className={styles.profileContainer}>
                 <div className={styles.profileImageContainer}>
@@ -84,13 +118,25 @@ const ReportDetail = ({
               )}
               </div>
               <hr/>
-              {report.keterangan && report.keterangan.length > 0 && report.keterangan.map((ket, index) => <Text component="p" key={index} medium>"{ket}"</Text>)}
+              {report.keterangan && report.keterangan.length > 0
+                ? report.keterangan.map((ket, index) => <Text component="p" key={index} medium>"{ket}"</Text>)
+                : <Text medium>Tidak ada keterangan yang ditambahkan oleh pelapor.</Text>
+              }
               <hr/>
               {
-                report.status === 'done' && <Button onClick={() => setMission(report._id)} primary>Set mission</Button>
+                report.status === 'active' && (
+                  <div className={cx(styles.reportAction)}>
+                    <Button style={{marginRight: '12px'}} onClick={() => setInvalid(report._id)} primaryAlt>Laporan tidak benar</Button>
+                    <Button onClick={() => setMission(report._id)} primary>Luncurkan sebagai misi</Button>
+                  </div>
+                )
               }
               {
-                report.status === 'mission' && <Button onClick={() => setCompleted(report._id)} primary>Set completed</Button>
+                report.status === 'mission' && (
+                  <div className={cx(styles.reportAction)}>
+                    <Button style={{justifySelf: 'flex-end'}} onClick={() => setCompleted(report._id)} primary>Set completed</Button>
+                  </div>
+                )
               }
             </div>
             <Map

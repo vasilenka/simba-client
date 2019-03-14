@@ -1,0 +1,45 @@
+@import 'invoker-tokens/index.scss';
+
+.root {
+  padding: $space-stack-ml;
+}
+
+.pageHeading {
+  margin: $space-vertical-l;
+}
+
+.subheading {
+  margin: $space-stack-sm;
+}
+
+.panels {
+  padding: $space-vertical-ll;
+}
+
+.badge {
+  margin-left: $space-s;
+}
+
+.mainContainer {
+  padding-top: $space-l;
+}
+
+.navTabContainer {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  box-shadow: 0px 1px 0px 0px rgba(0,0,0,.08);
+}
+
+.navtab {
+  cursor: pointer;
+  padding: $space-vertical-ml;
+  color: $dark-alpha-70;
+  margin: $space-inline-l;
+}
+
+.activeNavTab {
+  color: $brand-primary-200;
+  box-shadow: 0px 1px 0px 0px $brand-primary-200, inset 0px -1px 0px 0px $brand-primary-200;
+}
