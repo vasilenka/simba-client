@@ -11,12 +11,18 @@ import Image from '../Image/Image';
 import Button from '../Button/Button';
 import Dialog from '../Dialog/Dialog';
 import Container from '../../layouts/Container/Container';
-import Textfield from '../Textfield/Textfield';
-import Luna from '../Luna/Luna';
-import SinglePreview from '../SinglePreview/SinglePreview';
 import FieldInput from '../FieldInput/FieldInput';
 
 const Navbar = ({ className, ...restProps }) => {
+
+  let [showDialog, setShowDialog] = React.useState()
+
+  let [title, setTitle] = React.useState("")
+  let [body, setBody] = React.useState("")
+
+  React.useEffect(() => {
+
+  }, [title, body])
 
   const postBroadcast = (title, body) => {
     axios.post(`${process.env.REACT_APP_WEB_HOST}/broadcast`,
@@ -25,18 +31,21 @@ const Navbar = ({ className, ...restProps }) => {
         body: body
       }
     )
-    .then(res => console.log(res))
+    .then(res => {
+      console.log(res)
+      if(res.status === 200) {
+        setTitle(null)
+        setBody(null)
+      }
+    })
     .catch(err => console.log(err))
   }
-
-  let [showDialog, setShowDialog] = React.useState()
-
-  let [title, setTitle] = React.useState("")
-  let [body, setBody] = React.useState("")
 
   const sendBroadcast = () => {
     if(title && body) {
       postBroadcast(title, body)
+      setTitle("")
+      setBody("")
     }
   }
 
@@ -98,7 +107,7 @@ const Navbar = ({ className, ...restProps }) => {
                     setValue={v => setTitle(v)}
                     />
                   <br/>
-                  <Text heading6 component="label" style={{display: 'block', marginBottom: '12px'}}>Judul broadcast</Text>
+                  <Text heading6 component="label" style={{display: 'block', marginBottom: '12px'}}>Pesan broadcast</Text>
                   <FieldInput
                     id="body"
                     name="body"
