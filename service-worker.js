@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/simba-client/precache-manifest.bd6ae5b5d952a1534223312439da4053.js"
+  "/simba-client/precache-manifest.a651620c92a84c44ecc63870d9fa620e.js"
 );
 
 workbox.clientsClaim();
