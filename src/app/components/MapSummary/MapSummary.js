@@ -6,7 +6,7 @@ import Button from '../Button/Button'
 import Container from '../../layouts/Container/Container'
 import Text from '../Text/Text'
 import MonthSelector from '../MonthSelector/MonthSelector'
-import YearSelector from '../YearSelector/YearSelector'
+// import YearSelector from '../YearSelector/YearSelector'
 
 const MapSummary = ({
   className,
@@ -43,9 +43,9 @@ const MapSummary = ({
             <Button style={{marginRight: '12px'}} small secondary onClick={() => setShow(invalid)}>{invalid && invalid.length} Invalid</Button>
           </div>
           <div>
-            <div style={{marginRight: '12px', display: 'inline-flex'}}>
+            {/* <div style={{marginRight: '12px', display: 'inline-flex'}}>
               <YearSelector />
-            </div>
+            </div> */}
             <div style={{width: '128px', display: 'inline-flex'}}>
               <MonthSelector getSelectedValue={value => selectedMonth(value)} small/>
             </div>
