@@ -427,7 +427,7 @@ const SummaryPage = ({
             Reports and Users Growth
           </Text>
           <Text medium component="p" style={{maxWidth: '560px'}}>
-            Understand where your members have conversations, and where messages are most commonly read. Most messages will have multiple readers.
+            Track the growth of our user base and reports. We can use this data to evaluate the effectiveness of our plans and efforts.
           </Text>
         </div>
       </Container>
@@ -440,7 +440,7 @@ const SummaryPage = ({
             Reports Conversion
           </Text>
           <Text medium component="p" style={{maxWidth: '560px'}}>
-            Learn how information is shared in your workspace.
+            Monitor the ratio of all the reports and it's convertions into missions and invalid reports.
           </Text>
         </div>
       </Container>
@@ -453,7 +453,7 @@ const SummaryPage = ({
             All-time Users
           </Text>
           <Text medium component="p" style={{maxWidth: '560px'}}>
-            Understand where your members have conversations, and where messages are most commonly read. Most messages will have multiple readers.
+            Learn the distribution of our user base and see it's diversity.
           </Text>
         </div>
       </Container>

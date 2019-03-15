@@ -4,7 +4,7 @@ export const generateReport = (year, month, index, setData) => {
   let dataInMonth = {data: [], total: month.length}
   let data = new Array(dayjs(`${year}-${index}`).daysInMonth())
   for (let i = 0; i < data.length; i++) {
-    data[i] = {day: i+1, reports: month.filter(report => report.dayCreated === i+1), amount: month.filter(report => report.dayCreated === i+1).length}
+    data[i] = {day: i+1, reports: month.filter(report => dayjs(report.createdAt).date() === i+1), amount: month.filter(report => dayjs(report.createdAt).date() === i+1).length}
   }
   dataInMonth.data = data
   setData(dataInMonth)
