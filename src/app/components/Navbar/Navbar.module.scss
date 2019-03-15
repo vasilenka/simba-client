@@ -25,7 +25,7 @@
 }
 
 .secondary {
-
+  margin: $space-inline-ml;
 }
 
 .brand {
@@ -72,4 +72,8 @@
 .githubLink {
   height: fit-content;
   display: inherit;
+}
+
+.broadcastView {
+  padding: $space-vertical-ll;
 }
