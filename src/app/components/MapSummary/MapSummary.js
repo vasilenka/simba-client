@@ -32,7 +32,7 @@ const MapSummary = ({
         <div style={{paddingBottom: '24px'}}>
           <Text heading2 component="h2" style={{marginBottom: '12px'}}>Reports Location</Text>
           <Text medium component="p" style={{maxWidth: '560px'}}>
-            Learn and understand the distribution of the reports in our city on the map. We can use this data as consideration to plan our next improvement and socializing area.
+            Learn and understand the concentration of the reports in our city. We can use this data as consideration to plan our next improvement and socializing area.
           </Text>
         </div>
         <div style={{display: 'inline-flex', width: '100%', alignItems: 'center', justifyContent: 'space-between'}}>
