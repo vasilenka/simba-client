@@ -1,7 +1,7 @@
 import React from 'react'
 import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps"
 
-const Map = withScriptjs(withGoogleMap((props) =>
+const MapSelectCoordinate = withScriptjs(withGoogleMap((props) =>
   <GoogleMap
     defaultZoom={props.zoom}
     defaultCenter={{ lat: props.lat, lng: props.long }}
@@ -15,9 +15,15 @@ const Map = withScriptjs(withGoogleMap((props) =>
     }}
   >
     {props.isMarkerShown && <Marker
-      position={{ lat: props.lat, lng: props.long }} />
+      position={{ lat: props.lat, lng: props.long }}
+      draggable={props.draggable}
+      onDragEnd={e => {
+        props.onLatChange(e.latLng.lat())
+        props.onLngChange(e.latLng.lng())
+      }}
+      />
     }
   </GoogleMap>
 ))
 
-export default Map
+export default MapSelectCoordinate

@@ -7,8 +7,10 @@ import UserPage from './pages/UserPage/UserPage'
 import ReportDetail from './components/ReportDetail/ReportDetail'
 import ReportPage from './pages/ReportPage/ReportPage'
 import RequestPage from './pages/RequestPage/RequestPage'
-import UserDetail from './components/UserDetail/UserDetail';
-import SummaryPage from './pages/SummaryPage/SummaryPage';
+import UserDetail from './components/UserDetail/UserDetail'
+import SummaryPage from './pages/SummaryPage/SummaryPage'
+import BroadcastPage from './pages/BroadcastPage/BroadcastPage'
+import BroadcastCreatePage from './pages/BroadcastCreatePage/BroadcastCreatePage';
 
 class App extends Component {
   render() {
@@ -26,6 +28,8 @@ class App extends Component {
               <Route exact path="/users/:id" component={UserDetail} />
               <Route exact path="/request" component={RequestPage} />
               <Route exact path="/summary" component={SummaryPage} />
+              <Route exact path="/broadcast" component={BroadcastPage} />
+              <Route exact path="/broadcast/new" component={BroadcastCreatePage} />
             </React.Fragment>
           </React.Fragment>
         </Router>

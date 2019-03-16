@@ -1,0 +1,40 @@
+@import '~invoker-tokens/index.scss';
+
+.broadcastView {
+  padding: $space-vertical-l;
+}
+
+.pageTitle {
+  margin: $space-vertical-l;
+}
+
+.textarea {
+  width: 100%;
+  border: 1px solid $dark-alpha-20;
+  border-radius: 2px;
+  outline: none;
+  transition: all 0.3s;
+  box-sizing: border-box;
+  resize: vertical;
+  max-height: 480px;
+
+  &:focus,
+  &:active {
+    border-color: $brand-primary-200;
+    transition: all 0.28s;
+  }
+}
+
+.small {
+  composes: textarea;
+  padding: 8px 11px;
+  font-size: $heading-6;
+  line-height: 18px;
+}
+
+.normal {
+  composes: textarea;
+  padding: 11px;
+  font-size: $heading-5;
+  line-height: 24px;
+}

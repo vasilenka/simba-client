@@ -14,7 +14,6 @@ const Container = ({
   let defaultStyle = !narrow && !bleed && !fixLeft && !fixRight;
   return (
     <div
-      {...restProps}
       className={classnames({
         [styles.root]: true,
         [styles.normal]: defaultStyle,
@@ -24,6 +23,7 @@ const Container = ({
         [styles.fixRight]: fixRight,
         [className]: className
       })}
+      {...restProps}
     >
       {children}
     </div>

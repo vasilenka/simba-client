@@ -39,6 +39,7 @@ const SummaryPage = ({
     }
   }, [done])
 
+  // eslint-disable-next-line no-unused-vars
   let [selectedYear, setSelectedYear] = React.useState(2019)
   let [yearReports, setYearReports] = React.useState()
   let [yearUsers, setYearUsers] = React.useState()

@@ -1,0 +1,10 @@
+@import '~invoker-tokens/index.scss';
+
+.root {
+  top: 64px;
+  background: $dark-alpha-80;
+}
+
+.previewBroadcastContainer {
+  padding: $space-inset-ml;
+}

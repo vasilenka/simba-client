@@ -61,7 +61,7 @@ const ReportPage = ({
   return (
     <React.Fragment>
       <Navbar />
-      <Container fixLeft fixRight className={styles.mainContainer}>
+      <Container narrow className={styles.mainContainer}>
         <MainContent>
           <div styles={cx(styles.root)}>
             <Text heading1 component="h1" className={styles.pageHeading}>

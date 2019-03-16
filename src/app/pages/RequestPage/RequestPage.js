@@ -66,7 +66,7 @@ const RequestPage = ({
   return (
     <React.Fragment>
       <Navbar />
-      <Container fixLeft fixRight className={styles.mainContainer}>
+      <Container narrow className={styles.mainContainer}>
         <MainContent>
           <div
             className={cx({
