@@ -11,30 +11,35 @@ const Checkmark = ({
   component,
   ...restProps
 }) => {
-  let Component = component ? component : 'span';
 
-  const checkContext = useContext(CheckboxContext);
-  let [disabled, setDisable] = useState(null);
-  let [checked, setChecked] = useState();
-  let [value, setValue] = useState();
+  let Component = component ? component : 'span'
+
+  const context = useContext(CheckboxContext)
+
+  let [disabled, setDisable] = useState(false)
+  let [checked, setChecked] = useState()
+  let [value, setValue] = useState()
 
   const handleChange = e => {
     if (!disabled) {
-      setChecked(!checked);
-      if (checkContext.onChange) {
-        checkContext.onChange(!checked);
+      setChecked(!checked)
+      if (context.onChange) {
+        context.onChange(!checked)
       }
     }
   };
 
-  useEffect(
-    () => {
-      setDisable(checkContext.isDisabled);
-      setChecked(checkContext.isChecked);
-      setValue(checkContext.value);
-    },
-    [disabled, checked, value]
-  );
+  useEffect(() => {
+      setValue(context.value)
+    }, [value])
+
+  useEffect(() => {
+    setDisable(context.isDisabled)
+  }, [disabled])
+
+  useEffect(() => {
+    setChecked(context.isChecked)
+  }, [checked])
 
   return (
     <Component
@@ -47,9 +52,9 @@ const Checkmark = ({
       {...restProps}
     >
       <input
-        id={`checkbox__${checkContext.name}${checkContext.id}`}
+        id={`checkbox__${context.name}${context.id}`}
         type="checkbox"
-        name={checkContext.name}
+        name={context.name}
         className={classnames({
           [styles.box]: true,
           [styles.normal]: !large,
@@ -64,13 +69,13 @@ const Checkmark = ({
         onClick={handleChange}
         className={classnames({
           [styles.checkmark]: true,
-          [styles.hoverCheckmark]: checkContext.hover,
+          [styles.hoverCheckmark]: context.hover,
           [styles.normal]: !large,
           [styles.large]: large,
           [styles.disabled]: disabled
         })}
-        onMouseOver={checkContext.onHover}
-        onMouseLeave={checkContext.onLeave}
+        onMouseOver={context.onHover}
+        onMouseLeave={context.onLeave}
       />
     </Component>
   );

@@ -38,3 +38,33 @@
   font-size: $heading-5;
   line-height: 24px;
 }
+
+.userSelect {
+  display: inline-flex;
+  align-items: center;
+  margin: $space-inline-ml;
+}
+
+.checkmark {
+  margin: $space-inline-s;
+}
+
+.section {
+  padding: $space-vertical-l;
+}
+
+.sectionTitle {
+  color: $dark-alpha-70;
+  margin: $space-stack-ml;
+  display: block;
+}
+
+.field:not(:last-child) {
+  margin: $space-stack-ml;
+}
+
+.fieldLabel {
+  display: block;
+  margin: $space-stack-s;
+  color: $dark-alpha-70;
+}
