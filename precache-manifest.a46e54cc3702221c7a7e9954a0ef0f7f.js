@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "b710a21a91e0d8d290f8",
+    "revision": "58b36358040e8ebbbac2",
     "url": "/simba-client/static/css/main.15037148.chunk.css"
   },
   {
-    "revision": "b710a21a91e0d8d290f8",
-    "url": "/simba-client/static/js/main.b710a21a.chunk.js"
+    "revision": "58b36358040e8ebbbac2",
+    "url": "/simba-client/static/js/main.58b36358.chunk.js"
   },
   {
     "revision": "7c2c90597efa3bf6a533",
@@ -32,7 +32,7 @@ self.__precacheManifest = [
     "url": "/simba-client/static/media/expand-more.51b404b5.svg"
   },
   {
-    "revision": "cf4df11b9892801fe9b736aef9569ff2",
+    "revision": "dfb3302ce3e74249152b8397ecd40575",
     "url": "/simba-client/index.html"
   }
 ];
