@@ -11,6 +11,7 @@ import UserDetail from './components/UserDetail/UserDetail'
 import SummaryPage from './pages/SummaryPage/SummaryPage'
 import BroadcastPage from './pages/BroadcastPage/BroadcastPage'
 import BroadcastCreatePage from './pages/BroadcastCreatePage/BroadcastCreatePage';
+import AuthPage from './pages/AuthPage/AuthPage';
 
 class App extends Component {
   render() {
@@ -30,6 +31,9 @@ class App extends Component {
               <Route exact path="/summary" component={SummaryPage} />
               <Route exact path="/broadcast" component={BroadcastPage} />
               <Route exact path="/broadcast/new" component={BroadcastCreatePage} />
+
+              <Route exact path="/auth" component={AuthPage} />
+
             </React.Fragment>
           </React.Fragment>
         </Router>

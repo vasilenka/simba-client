@@ -41,18 +41,6 @@ const BroadcastCreatePage = ({
     }
   }
 
-  React.useEffect(() => {
-    if(receivers) {
-      console.log(receivers)
-    }
-  }, [receivers])
-
-  React.useEffect(() => {
-    if(longitude && latitude) {
-      console.log("COORD: ", latitude, longitude)
-    }
-  }, [longitude, latitude])
-
   const sendBroadcast = () => {
     if(title && body && image) {
       setSending(true)
@@ -84,7 +72,6 @@ const BroadcastCreatePage = ({
     axios.post(`${process.env.REACT_APP_WEB_HOST}/broadcasts`, data, config)
     .then(res => {
       if(res.status === 200) {
-        console.log(res)
         setSending(false)
       }
     })
