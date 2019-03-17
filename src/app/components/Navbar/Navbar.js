@@ -63,14 +63,14 @@ const Navbar = ({ className, ...restProps }) => {
           </div>
         </div>
         <div className={styles.secondary}>
-          {authenticated && authenticated.role === 'dispatcher' &&
+          {/* {authenticated && authenticated.role === 'dispatcher' && */}
             <Link to="/broadcast/new" style={{marginRight: '12px'}}>
               <Button small primary>New broadcast</Button>
             </Link>
-          }
-          <Link to="/broadcast/new">
+          {/* } */}
+          {/* <Link to="/broadcast/new">
             <Button small primaryAlt>Sign in</Button>
-          </Link>
+          </Link> */}
         </div>
       </div>
     </div>
