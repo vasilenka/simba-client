@@ -11,10 +11,11 @@ import Navbar from '../../components/Navbar/Navbar'
 import PreviewBroadcast from '../../broadcast/PreviewBroadcast/PreviewBroadcast'
 import Luna from '../../components/Luna/Luna'
 import Image from '../../components/Image/Image'
-import MapSelectCoordinate from '../../components/MapSelectCoordinate/MapSelectCoordinate';
-import CheckLabel from '../../components/CheckLabel/CheckLabel';
-import Checkbox from '../../components/Checkbox/Checkbox';
-import CheckMark from '../../components/CheckMark/CheckMark';
+import MapSelectCoordinate from '../../components/MapSelectCoordinate/MapSelectCoordinate'
+import CheckLabel from '../../components/CheckLabel/CheckLabel'
+import Checkbox from '../../components/Checkbox/Checkbox'
+import CheckMark from '../../components/CheckMark/CheckMark'
+// import MapWithASearchBox from '../../components/MapPlace/MapPlace';
 
 const BroadcastCreatePage = ({
   className,
@@ -26,11 +27,22 @@ const BroadcastCreatePage = ({
   let [address, setAddress] = React.useState('')
   let [place, setPlace] = React.useState('')
   let [image, setImage] = React.useState()
-  let [latitude, setLatitude] = React.useState(-6.871154247567597)
-  let [longitude, setLongitude] = React.useState(107.62324781513212)
+  let [latitude, setLatitude] = React.useState()
+  let [longitude, setLongitude] = React.useState()
   let [receivers, setReceivers] = React.useState([])
 
   let [sending, setSending] = React.useState(false)
+
+  React.useEffect(() => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(position => {
+        setLatitude(position.coords.latitude)
+        setLongitude(position.coords.longitude)
+      })
+    } else {
+      console.log('GEOLOCATION NOT SUPPORTED')
+    }
+  }, [])
 
   const validateReceivers = state => {
     if (state.isChecked) {
@@ -223,9 +235,10 @@ const BroadcastCreatePage = ({
             </div>
             <div className={styles.field}>
               <Text heading5 component="label" className={styles.fieldLabel}>Posisi pada peta</Text>
+              {/* <MapWithASearchBox isMarkerShown searchValue={place} onPlacesChanged={val => console.log("PLACE:", val)}/> */}
               <MapSelectCoordinate
-                lat={-6.871154247567597}
-                long={107.62324781513212}
+                lat={latitude}
+                long={longitude}
                 isMarkerShown
                 zoom={15}
                 onLatChange={lat => setLatitude(lat)}

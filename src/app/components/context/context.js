@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const AuthContext = React.createContext()
+export const AuthContext = React.createContext({})
 
 export const TabContext = React.createContext()
 export const LunaContext = React.createContext()

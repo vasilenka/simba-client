@@ -13,6 +13,7 @@ import Close from '../../icons/Close/Close'
 import RoleRequest from '../RoleRequest/RoleRequest'
 import ReportCard from '../ReportCard/ReportCard';
 import Map from '../Map/Map';
+import { AuthContext } from '../context/context';
 
 const UserDetail = ({
   className,
@@ -22,6 +23,8 @@ const UserDetail = ({
   refetchData,
   ...restProps
   }) => {
+
+  let context = React.useContext(AuthContext)
 
   let [user, setUser] = React.useState()
   let [reports, setReports] = React.useState()
@@ -111,9 +114,10 @@ const UserDetail = ({
                     style={{marginBottom: '48px'}}
                     />
               }
-              {
-                user.registerProcess === 'done' && user.status === 'pending'
-                  ?   (<div style={{paddingBottom: '64px'}}>
+              {user.registerProcess === 'done' && user.status === 'pending'
+                  ?
+                      context && context.token
+                        ? (<div style={{paddingBottom: '64px'}}>
                         <Text heading2 component="h2" className={styles.subheading}>Personal information</Text>
                         <div className={styles.personalInformation}>
                           <div className={styles.profileInfo}>
@@ -126,7 +130,7 @@ const UserDetail = ({
                           </div>
                           <div className={styles.profileInfo}>
                             <Text className={styles.infoPoint} small>Tanggal lahir</Text>
-                            <Text className={styles.infoValue} heading5>{dayjs(user.birthDate).format('DD MMMM YYYY')}</Text>
+                            <Text className={styles.infoValue} heading5>{user.birthDate && dayjs(user.birthDate).format('DD MMMM YYYY')}</Text>
                           </div>
                           <div className={styles.profileInfo}>
                             <Text className={styles.infoPoint} small>Alamat</Text>
@@ -164,6 +168,7 @@ const UserDetail = ({
                           </footer>
                         </div>
                       </div>)
+                    : null
                   :   <Text medium component="p">User belum registrasi akun</Text>
               }
               <div style={{paddingBottom: '48px'}}>

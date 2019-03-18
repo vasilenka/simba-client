@@ -1,0 +1,14 @@
+@import '~invoker-tokens/index.scss';
+
+.root {
+
+}
+
+.searchBoxContainer {
+  padding: $space-inset-sm;
+}
+
+.searchBox {
+  background: $light-alpha-100;
+  width: 280px;
+}

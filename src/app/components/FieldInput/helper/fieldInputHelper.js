@@ -1,6 +1,6 @@
 import * as yup from 'yup';
 
-export const defaultShape = (type = 'text', required, id = 'Text') => {
+export const defaultShape = (type = 'text', required, id = 'Text', passwordLength = 8) => {
   let fieldName = id.replace(/^\w/, c => c.toUpperCase());
 
   switch (type) {
@@ -18,7 +18,7 @@ export const defaultShape = (type = 'text', required, id = 'Text') => {
       return {
         password: yup
           .string()
-          .min(8, 'Password must be at least 8 character')
+          .min(passwordLength, `Password must be at least ${passwordLength} character`)
           .required('Password is required')
       };
 

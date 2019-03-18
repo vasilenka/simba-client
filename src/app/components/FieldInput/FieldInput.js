@@ -25,12 +25,13 @@ class FieldInput extends Component {
       required,
       id,
       setTone,
+      passwordLength,
       setMessage
     } = this.props;
 
     this.validationSchema = yup
       .object()
-      .shape(yupShape || defaultShape(type, required, id));
+      .shape(yupShape || defaultShape(type, required, id, passwordLength));
 
     if (value && !disabled) {
       this.validationSchema
@@ -161,6 +162,7 @@ class FieldInput extends Component {
 
   render() {
     const {
+      autoComplete,
       id,
       className,
       type,
@@ -172,6 +174,7 @@ class FieldInput extends Component {
       placeholder,
       value,
       setValue,
+      passwordLength,
       setMessage,
       tone,
       setTone,
@@ -192,6 +195,7 @@ class FieldInput extends Component {
         onKeyPress={this.onKeyPress}
         type={type}
         id={id}
+        autoComplete={autoComplete}
         className={classnames({
           [styles.root]: true,
           [styles.normal]: !small,

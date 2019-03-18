@@ -1,78 +1,51 @@
 import styles from './Navbar.module.scss'
 import React from 'react'
 import cx from 'classnames'
-import {NavLink, Link} from 'react-router-dom'
-
+import {Link} from 'react-router-dom'
 import {AuthContext} from './../context/context'
 
-import dlogo from './dlogo.png'
-import Text from '../Text/Text'
-import Image from '../Image/Image'
+import NavbarBrand from '../NavbarBrand/NavbarBrand'
+import NavbarSecondary from '../NavbarSecondary/NavbarSecondary'
+import NavbarPrimary from '../NavbarPrimary/NavbarPrimary'
+import NavbarMenu from '../NavbarMenu/NavbarMenu'
+import NavbarAvatar from '../NavbarAvatar/NavbarAvatar'
 import Button from '../Button/Button'
 
-const Navbar = ({ className, ...restProps }) => {
+const Navbar = ({ children, className, ...restProps }) => {
 
-  const authenticated = React.useContext(AuthContext)
+  let context = React.useContext(AuthContext)
 
   return (
-    <div className={cx(styles.root)}>
-      <div className={cx(styles.container)}>
-        <div className={styles.primary}>
-          <div className={styles.brand}>
-            <NavLink exact to="/">
-              {/* <Logo className={styles.logo} /> */}
-              <Image src={dlogo} naturalWidth={1153 } alt="darurat! app" naturalHeight={320} containerClass={styles.logo}/>
-            </NavLink>
-          </div>
-          <div className={cx(styles.menus)}>
-            <div className={styles.menu}>
-              <NavLink to="/summary" className={styles.linkContainer} activeClassName={styles.activeLinkContainer}>
-                <Text heading6 className={styles.link}>
-                  Summary
-                </Text>
-              </NavLink>
-            </div>
-            <div className={styles.menu}>
-              <NavLink to="/reports" className={styles.linkContainer} activeClassName={styles.activeLinkContainer}>
-                <Text heading6 className={styles.link}>
-                  Reports & Missions
-                </Text>
-              </NavLink>
-            </div>
-            <div className={styles.menu}>
-              <NavLink to="/broadcast" className={styles.linkContainer} activeClassName={styles.activeLinkContainer}>
-                <Text heading6 className={styles.link}>
-                  Broadcasts
-                </Text>
-              </NavLink>
-            </div>
-            <div className={styles.menu}>
-              <NavLink to="/users" className={styles.linkContainer} activeClassName={styles.activeLinkContainer}>
-                <Text heading6 className={styles.link}>
-                  Users
-                </Text>
-              </NavLink>
-            </div>
-            <div className={styles.menu}>
-              <NavLink to="/request" className={styles.linkContainer} activeClassName={styles.activeLinkContainer}>
-                <Text heading6 className={styles.link}>
-                  Requests
-                </Text>
-              </NavLink>
-            </div>
-          </div>
-        </div>
-        <div className={styles.secondary}>
-          {/* {authenticated && authenticated.role === 'dispatcher' && */}
-            <Link to="/broadcast/new" style={{marginRight: '12px'}}>
+    <div
+      className={cx({
+        [styles.root]: true,
+        [className]: className
+      })}
+      {...restProps}
+    >
+      <NavbarPrimary>
+        <NavbarBrand />
+        <NavbarMenu to="/summary">Summary</NavbarMenu>
+        <NavbarMenu to="/reports">Reports & Missions</NavbarMenu>
+        <NavbarMenu to="/broadcasts">Broadcasts</NavbarMenu>
+        <NavbarMenu to="/users">Users</NavbarMenu>
+        <NavbarMenu to="/requests">Requests</NavbarMenu>
+      </NavbarPrimary>
+      <NavbarSecondary>
+        {context.token &&
+          <React.Fragment>
+            <Link to="/broadcasts/new" style={{marginRight: '24px'}}>
               <Button small primary>New broadcast</Button>
             </Link>
-          {/* } */}
-          {/* <Link to="/broadcast/new">
-            <Button small primaryAlt>Sign in</Button>
-          </Link> */}
-        </div>
-      </div>
+            <NavbarAvatar src={context.user.profileUrl } />
+          </React.Fragment>
+        }
+        {context && !context.token &&
+          <Link to="/auth">
+            <Button small primary>Sign in</Button>
+          </Link>
+        }
+      </NavbarSecondary>
     </div>
   )
 }

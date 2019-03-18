@@ -1,0 +1,31 @@
+@import '~invoker-tokens/index.scss';
+
+.root {
+  height: 1px;
+  max-width: 100%;
+  display: block;
+  box-sizing: border-box;
+}
+
+.normal {
+  background: $dark-alpha-20;
+}
+
+.transparent {
+  background: transparent;
+}
+
+.small {
+  margin-top: $space-s;
+  margin-bottom: $space-s;
+}
+
+.medium {
+  margin-top: $space-m;
+  margin-bottom: $space-m;
+}
+
+.large {
+  margin-top: $space-ll;
+  margin-bottom: $space-ll;
+}

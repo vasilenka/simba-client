@@ -7,6 +7,7 @@ import Button from '../Button/Button'
 import Image from '../Image/Image'
 import dayjs from 'dayjs'
 import axios from 'axios'
+import { AuthContext } from '../context/context';
 
 const ReportDetail = ({
   match,
@@ -16,6 +17,7 @@ const ReportDetail = ({
   ...restProps
   }) => {
 
+  let context = React.useContext(AuthContext)
   let [report, setReport] = React.useState()
 
   const fetchReport = async id => {
@@ -123,7 +125,7 @@ const ReportDetail = ({
                 : <Text medium>Tidak ada keterangan yang ditambahkan oleh pelapor.</Text>
               }
               <hr/>
-              {
+              {context && context.user.role === 'dispatcher' &&
                 report.status === 'active' && (
                   <div className={cx(styles.reportAction)}>
                     <Button style={{marginRight: '12px'}} onClick={() => setInvalid(report._id)} primaryAlt>Laporan tidak benar</Button>
@@ -131,7 +133,7 @@ const ReportDetail = ({
                   </div>
                 )
               }
-              {
+              {context && context.user.role === 'dispatcher' &&
                 report.status === 'mission' && (
                   <div className={cx(styles.reportAction)}>
                     <Button style={{justifySelf: 'flex-end'}} onClick={() => setCompleted(report._id)} primary>Set completed</Button>

@@ -10,7 +10,7 @@ import { MarkerClusterer } from 'react-google-maps/lib/components/addons/MarkerC
 
 const MapCluster = compose(
   withProps({
-    googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyBNREXU2Q7SUSMuBdiDxHRzY_SRd-_QVGc&v=3.exp&libraries=geometry,drawing,places",
+    googleMapURL: `https://maps.googleapis.com/maps/api/js?key=AIzaSyBNREXU2Q7SUSMuBdiDxHRzY_SRd-_QVGc&v=3.exp&libraries=geometry,drawing,places`,
     containerElement: <div style={{
       // position: 'fixed',
       // top: 0,

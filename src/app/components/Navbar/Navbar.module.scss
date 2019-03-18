@@ -2,74 +2,12 @@
 
 .root {
   background: $light-alpha-100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
   position: sticky;
   top: 0;
-  left: 0;
-  right: 0;
-  composes: container-bleed from global;
+  box-shadow: inset 0px -1px 0px 0px $dark-alpha-20;
   z-index: 99999;
-  box-shadow: 0px 1px 0px 0px rgba(0,0,0,.10);
-}
-
-.container {
-  composes: container-bleed from global;
-  justify-content: space-between;
-  align-items: center;
-  display: flex;
-}
-
-.primary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: flex-start;
-}
-
-.secondary {
-  margin: $space-inline-ml;
-}
-
-.brand {
-  display: inline-flex;
-  align-items: center;
-  min-height: 36px;
-  justify-content: flex-start;
-  margin: $space-horizontal-ml;
-}
-
-.logo {
-  // max-height: 28px;
-  // height: 28px;
-  width: 112px;
-  // margin: $space-inline-sm;
-}
-
-.menu {
-  display: inline-flex;
-  padding: $space-horizontal-m;
-}
-
-.linkContainer {
-  display: inline-flex;
-  padding: $space-ml 0;
-}
-
-.activeLinkContainer {
-  box-shadow: inset 0px -3px 0px 0px $brand-primary-200;
-}
-
-.link {
-  color: $dark-alpha-70
-}
-
-.name {
-  color: $light-alpha-100 !important;
-}
-
-.github {
-  margin: $space-horizontal-ml;
-}
-
-.githubLink {
-  height: fit-content;
-  display: inherit;
 }

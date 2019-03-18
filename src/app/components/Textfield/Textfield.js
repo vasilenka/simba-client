@@ -7,7 +7,9 @@ import FieldInput from './../FieldInput/FieldInput';
 import FieldHint from './../FieldHint/FieldHint';
 
 const Textfield = ({
+  autoComplete,
   id,
+  passwordLength,
   label,
   secondaryLabel,
   tertiaryLabel,
@@ -30,13 +32,14 @@ const Textfield = ({
   onClick,
   ...restProps
 }) => {
-  const [toneHook, setToneHook] = useState(tone || '');
-  const [messageHook, setMessageHook] = useState(message || '');
-  const [valueHook, setValueHook] = useState(value || '');
 
-  const handleChange = value => {
-    setValueHook(value);
-    onChange(value, type);
+  const [toneHook, setToneHook] = useState(tone);
+  const [messageHook, setMessageHook] = useState(message);
+  const [valueHook, setValueHook] = useState(value);
+
+  const handleChange = (e, value) => {
+    setValueHook(value)
+    onChange(e, value, type, toneHook)
   };
 
   const setMessage = message => setMessageHook(message);
@@ -73,6 +76,8 @@ const Textfield = ({
         onChange={handleChange}
         onFocus={onFocus}
         yupShape={yupShape}
+        autoComplete={autoComplete}
+        passwordLength={passwordLength}
       />
 
       {toneHook && messageHook && (
