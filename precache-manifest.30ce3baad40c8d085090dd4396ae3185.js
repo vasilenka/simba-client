@@ -1,19 +1,19 @@
 self.__precacheManifest = [
   {
-    "revision": "6922f219a614a9e05349",
-    "url": "/simba-client/static/css/main.15037148.chunk.css"
+    "revision": "ad316d0cf0fc896194a3",
+    "url": "/simba-client/static/css/main.f23e362a.chunk.css"
   },
   {
-    "revision": "6922f219a614a9e05349",
-    "url": "/simba-client/static/js/main.6922f219.chunk.js"
+    "revision": "ad316d0cf0fc896194a3",
+    "url": "/simba-client/static/js/main.ad316d0c.chunk.js"
   },
   {
     "revision": "7c2c90597efa3bf6a533",
     "url": "/simba-client/static/js/runtime~main.7c2c9059.js"
   },
   {
-    "revision": "5bae537a6b8affd21b3c",
-    "url": "/simba-client/static/js/2.5bae537a.chunk.js"
+    "revision": "e4e0d66a3f62d69f16d8",
+    "url": "/simba-client/static/js/2.e4e0d66a.chunk.js"
   },
   {
     "revision": "08d6398bba7cced737539e0b3d115adb",
@@ -32,7 +32,7 @@ self.__precacheManifest = [
     "url": "/simba-client/static/media/expand-more.51b404b5.svg"
   },
   {
-    "revision": "6a26d7ddb9ad6abbcb366ef7989c90ad",
+    "revision": "cb527dc96494821db3cf362efc07fb18",
     "url": "/simba-client/index.html"
   }
 ];
