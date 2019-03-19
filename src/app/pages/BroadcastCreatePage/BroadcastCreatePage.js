@@ -27,8 +27,8 @@ const BroadcastCreatePage = ({
   let [address, setAddress] = React.useState('')
   let [place, setPlace] = React.useState('')
   let [image, setImage] = React.useState()
-  let [latitude, setLatitude] = React.useState()
-  let [longitude, setLongitude] = React.useState()
+  let [latitude, setLatitude] = React.useState(-7.3505208)
+  let [longitude, setLongitude] = React.useState(108.2184531)
   let [receivers, setReceivers] = React.useState([])
 
   let [sending, setSending] = React.useState(false)
@@ -42,7 +42,16 @@ const BroadcastCreatePage = ({
     } else {
       console.log('GEOLOCATION NOT SUPPORTED')
     }
-  }, [])
+  }, [navigator.geolocation])
+
+  const getLocation = () => {
+    console.log('Hello world')
+    navigator.geolocation.watchPosition((pos) => {
+      let lat = pos.coords.lat
+      let lng = pos.coords.lng
+      console.log("LAT: " + lat + " LNG: " + lng)
+    })
+  }
 
   const validateReceivers = state => {
     if (state.isChecked) {
@@ -254,6 +263,7 @@ const BroadcastCreatePage = ({
               />
             </div>
           </div>
+          <Button small primaryAlt onClick={getLocation}>Get your location</Button>
           <footer style={{display: 'flex', width: '100%', padding: '12px 0', justifyContent: 'flex-start'}}>
             <Button
               primary

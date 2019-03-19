@@ -5,7 +5,7 @@ import cx from 'classnames'
 import Container from '../../layouts/Container/Container'
 import Navbar from '../../components/Navbar/Navbar'
 import Text from '../../components/Text/Text'
-import MainContent from '../../layouts/MainContent/MainContent';
+import MainContent from '../../layouts/MainContent/MainContent'
 // import Button from '../../components/Button/Button'
 // import FieldInput from '../../components/FieldInput/FieldInput'
 // import PreviewBroadcast from '../../broadcast/PreviewBroadcast/PreviewBroadcast';

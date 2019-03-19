@@ -2,7 +2,8 @@ import styles from './AuthPage.module.scss'
 import React from 'react'
 import cx from 'classnames'
 import axios from 'axios'
-import {AuthContext} from './../../components/context/context'
+
+import { AuthContext } from './../../components/context/context'
 
 import Container from '../../layouts/Container/Container'
 import Navbar from '../../components/Navbar/Navbar'
@@ -19,6 +20,7 @@ import Button from '../../components/Button/Button';
 const AuthPage = ({
   className,
   history,
+  location,
   ...restProps
   }) => {
 
@@ -29,32 +31,35 @@ const AuthPage = ({
   let [password, setPassword] = React.useState()
   let [error, setError] = React.useState()
 
-  const processLogin = () => {
+  const processLogin = async () => {
     if(email && password) {
       setLoading(true)
-      axios
-        .post(`${process.env.REACT_APP_WEB_HOST}/auth`, { email, password })
-        .then(res => {
-          if(res.status === 400) {
-            setError(true)
-            return Promise.reject()
-          }
-          return res.data
-        })
-        .then(data => {
-          context.setToken(data.token)
-          context.setUser(data.user)
-          setLoading(false)
-          if(history.length <= 2) {
-            history.push('/')
-          } else {
-            history.goBack()
-          }
-        })
-        .catch(err => {
+      try {
+
+        let res = await axios.post(`${process.env.REACT_APP_WEB_HOST}/auth`, { email, password })
+        if(res.status === 400) {
           setError(true)
-          setLoading(false)
-        })
+          throw new Error()
+        }
+        let data = res.data
+        context.setToken(data.token)
+        context.setUser(data.user)
+
+        setLoading(false)
+
+        if(location.state && location.state.from) {
+          return history.replace(location.state.from.pathname)
+        } else {
+          return history.replace('/')
+        }
+
+      } catch (err) {
+
+        console.log(err)
+        setError(true)
+        setLoading(false)
+
+      }
     }
   }
 

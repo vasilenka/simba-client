@@ -15,6 +15,7 @@ import SummaryPage from './pages/SummaryPage/SummaryPage'
 import BroadcastPage from './pages/BroadcastPage/BroadcastPage'
 import BroadcastCreatePage from './pages/BroadcastCreatePage/BroadcastCreatePage'
 import AuthPage from './pages/AuthPage/AuthPage'
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 
 const useTokenState = createPersistedState('token')
 const useUserState = createPersistedState('user')
@@ -66,7 +67,7 @@ const App = (props) => {
               <Route exact path="/users/:id" component={UserDetail} />
               <Route exact path="/requests" component={RequestPage} />
               <Route exact path="/broadcasts" component={BroadcastPage} />
-              <Route exact path="/broadcasts/new" component={BroadcastCreatePage} />
+              <PrivateRoute exact path="/broadcasts/new" component={BroadcastCreatePage} />
 
               <Route exact path="/auth" component={AuthPage} />
 
