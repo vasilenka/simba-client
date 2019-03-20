@@ -1,0 +1,30 @@
+@import '~invoker-tokens/index.scss';
+
+.root {
+  padding: $space-vertical-ll;
+  max-width: 560px;
+}
+
+.pageTitle {
+  margin: $space-vertical-l;
+}
+
+.section {
+  padding: $space-vertical-l;
+}
+
+.sectionTitle {
+  color: $dark-alpha-70;
+  margin: $space-stack-ml;
+  display: block;
+}
+
+.textfield:not(:last-child) {
+  margin: $space-stack-ml;
+}
+
+.fieldLabel {
+  display: block;
+  margin: $space-stack-s;
+  color: $dark-alpha-70;
+}
