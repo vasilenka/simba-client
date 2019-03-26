@@ -10,12 +10,6 @@ import Navbar from '../../components/Navbar/Navbar'
 import Text from '../../components/Text/Text'
 import MainContent from '../../layouts/MainContent/MainContent';
 import Textfield from '../../components/Textfield/Textfield';
-import Button from '../../components/Button/Button';
-// import Button from '../../components/Button/Button'
-// import FieldInput from '../../components/FieldInput/FieldInput'
-// import PreviewBroadcast from '../../broadcast/PreviewBroadcast/PreviewBroadcast';
-// import Luna from '../../components/Luna/Luna';
-// import Image from '../../components/Image/Image';
 
 const SetupPage = ({
   className,
