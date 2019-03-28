@@ -44,15 +44,6 @@ const BroadcastCreatePage = ({
     }
   }, [navigator.geolocation])
 
-  const getLocation = () => {
-    console.log('Hello world')
-    navigator.geolocation.watchPosition((pos) => {
-      let lat = pos.coords.lat
-      let lng = pos.coords.lng
-      console.log("LAT: " + lat + " LNG: " + lng)
-    })
-  }
-
   const validateReceivers = state => {
     if (state.isChecked) {
       receivers.push(state.value)
@@ -244,7 +235,6 @@ const BroadcastCreatePage = ({
             </div>
             <div className={styles.field}>
               <Text heading5 component="label" className={styles.fieldLabel}>Posisi pada peta</Text>
-              {/* <MapWithASearchBox isMarkerShown searchValue={place} onPlacesChanged={val => console.log("PLACE:", val)}/> */}
               <MapSelectCoordinate
                 lat={latitude}
                 long={longitude}
@@ -263,7 +253,6 @@ const BroadcastCreatePage = ({
               />
             </div>
           </div>
-          <Button small primaryAlt onClick={getLocation}>Get your location</Button>
           <footer style={{display: 'flex', width: '100%', padding: '12px 0', justifyContent: 'flex-start'}}>
             <Button
               primary
