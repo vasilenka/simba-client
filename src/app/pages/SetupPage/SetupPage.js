@@ -33,11 +33,9 @@ const SetupPage = ({
       axios
         .post(`${process.env.REACT_APP_WEB_HOST}/auth/verifyMe`, {}, { headers: {'Authorization': `Bearer ${token}`}})
         .then(res => {
-          console.log(res)
           setResponse(res.data)
         })
         .catch(err => {
-          console.log(err)
           history.replace('/auth')
         })
     } else {
