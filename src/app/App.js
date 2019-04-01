@@ -71,7 +71,7 @@ const App = (props) => {
               <PrivateRoute exact path="/broadcasts/new" component={BroadcastCreatePage} />
 
               <Route exact path="/auth" component={AuthPage} />
-              <Route exact path="/auth/:id" component={SetupPage} />
+              <Route exact path="/setup" component={SetupPage} />
 
             </React.Fragment>
           </React.Fragment>

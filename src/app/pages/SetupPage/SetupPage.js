@@ -1,33 +1,59 @@
-import styles from './SetupPage.module.scss';
-import React from 'react';
-import cx from 'classnames';
+import styles from './SetupPage.module.scss'
+import React from 'react'
+import cx from 'classnames'
 import axios from 'axios'
 
-import { AuthContext } from './../../components/context/context'
+// import { AuthContext } from './../../components/context/context'
 
 import Container from '../../layouts/Container/Container'
 import Navbar from '../../components/Navbar/Navbar'
 import Text from '../../components/Text/Text'
-import MainContent from '../../layouts/MainContent/MainContent';
-import Textfield from '../../components/Textfield/Textfield';
+import MainContent from '../../layouts/MainContent/MainContent'
+import Textfield from '../../components/Textfield/Textfield'
 
 const SetupPage = ({
+  location,
+  history,
   className,
   ...restProps
   }) => {
 
-  let context = React.useContext(AuthContext)
+  let token = String(location.search).replace('?token=', '')
+  // let context = React.useContext(AuthContext)
 
-  let [loading, setLoading] = React.useState(false)
+  // let [loading, setLoading] = React.useState(false)
   let [email, setEmail] = React.useState()
   let [password, setPassword] = React.useState()
   let [error, setError] = React.useState()
+  let [response, setResponse] = React.useState()
+
+  React.useEffect(() => {
+    if(token) {
+      console.log("TOKEN: ", token)
+      axios
+        .post(`${process.env.REACT_APP_WEB_HOST}/auth/verifyMe`, {}, { headers: {'Authorization': `Bearer ${token}`}})
+        .then(res => {
+          console.log(res)
+          setResponse(res.data)
+        })
+        .catch(err => {
+          console.log(err)
+          history.replace('/auth')
+        })
+    } else {
+      history.replace('/auth')
+    }
+  }, [])
 
   return (
     <React.Fragment>
       <Navbar/>
+
       <Container fixLeft fixRight className={cx(styles.root)}>
         <MainContent>
+          {
+            response && response.name
+          }
           <Text heading1 component="h1">Setup your account</Text>
           <Text large className={styles.pageTitle} style={{display: 'block'}}>Please setup your account to continue as an admin</Text>
           {error && <Text heading4 component="p" style={{color: "#ff5a5b"}}>error gan!</Text>}
