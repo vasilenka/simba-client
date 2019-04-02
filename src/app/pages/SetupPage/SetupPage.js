@@ -28,14 +28,15 @@ const SetupPage = ({
   let [response, setResponse] = React.useState()
 
   React.useEffect(() => {
+    console.log(history)
     if(token) {
-      console.log("TOKEN: ", token)
       axios
         .post(`${process.env.REACT_APP_WEB_HOST}/auth/verifyMe`, {}, { headers: {'Authorization': `Bearer ${token}`}})
         .then(res => {
           setResponse(res.data)
         })
         .catch(err => {
+          console.log(err)
           history.replace('/auth')
         })
     } else {
