@@ -50,9 +50,6 @@ const SetupPage = ({
 
       <Container fixLeft fixRight className={cx(styles.root)}>
         <MainContent>
-          {
-            response && response.name
-          }
           <Text heading1 component="h1">Setup your account</Text>
           <Text large className={styles.pageTitle} style={{display: 'block'}}>Please setup your account to continue as an admin</Text>
           {error && <Text heading4 component="p" style={{color: "#ff5a5b"}}>error gan!</Text>}
