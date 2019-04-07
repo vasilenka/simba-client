@@ -41,6 +41,7 @@ class Image extends Component {
     const {
       children,
       className,
+      imageClass,
       containerClass,
       containerStyle,
       bgColor,
@@ -84,7 +85,7 @@ class Image extends Component {
       <div
         className={classnames({
           [styles.container]: true,
-          [containerClass]: containerClass
+          [containerClass]: containerClass,
         })}
         style={{
           backgroundColor: bgColor,
@@ -95,7 +96,7 @@ class Image extends Component {
         <img
           className={classnames({
             [styles.root]: true,
-            [className]: className
+            [className]: className,
           })}
           src={src}
           alt={alt}

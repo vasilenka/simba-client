@@ -16,7 +16,7 @@ const NavbarBrand = ({ children, className, ...restProps }) => {
       {...restProps}
       >
       <NavLink exact to="/">
-        <Image src={dlogo} naturalWidth={1153 } alt="darurat! app" naturalHeight={320} containerClass={styles.brand}/>
+        <Image src={dlogo} naturalWidth={1153 } alt="darurat! app" naturalHeight={320} containerStyle={{ width: '112px' }}/>
       </NavLink>
     </div>
   )
