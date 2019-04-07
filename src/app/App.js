@@ -6,17 +6,27 @@ import {AuthContext} from './components/context/context'
 import createPersistedState from 'use-persisted-state'
 import axios from 'axios'
 
-import UserPage from './pages/UserPage/UserPage'
-import ReportDetail from './components/ReportDetail/ReportDetail'
-import ReportPage from './pages/ReportPage/ReportPage'
-import RequestPage from './pages/RequestPage/RequestPage'
-import UserDetail from './components/UserDetail/UserDetail'
 import SummaryPage from './pages/SummaryPage/SummaryPage'
-import BroadcastPage from './pages/BroadcastPage/BroadcastPage'
-import BroadcastCreatePage from './pages/BroadcastCreatePage/BroadcastCreatePage'
-import AuthPage from './pages/AuthPage/AuthPage'
-import PrivateRoute from './components/PrivateRoute/PrivateRoute';
-import SetupPage from './pages/SetupPage/SetupPage';
+// import ReportDetail from './components/ReportDetail/ReportDetail'
+const ReportDetail = React.lazy(() => import('./components/ReportDetail/ReportDetail'))
+// import ReportPage from './pages/ReportPage/ReportPage'
+const ReportPage = React.lazy(() => import('./pages/ReportPage/ReportPage'))
+// import RequestPage from './pages/RequestPage/RequestPage'
+const RequestPage = React.lazy(() => import('./pages/RequestPage/RequestPage'))
+// import UserDetail from './components/UserDetail/UserDetail'
+const UserDetail = React.lazy(() => import('./components/UserDetail/UserDetail'))
+// import BroadcastPage from './pages/BroadcastPage/BroadcastPage'
+const BroadcastPage = React.lazy(() => import('./pages/BroadcastPage/BroadcastPage'))
+// import BroadcastCreatePage from './pages/BroadcastCreatePage/BroadcastCreatePage'
+const BroadcastCreatePage = React.lazy(() => import('./pages/BroadcastCreatePage/BroadcastCreatePage'))
+// import AuthPage from './pages/AuthPage/AuthPage'
+const AuthPage = React.lazy(() => import('./pages/AuthPage/AuthPage'))
+// import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+const PrivateRoute = React.lazy(() => import('./components/PrivateRoute/PrivateRoute'))
+// import SetupPage from './pages/SetupPage/SetupPage';
+const SetupPage = React.lazy(() => import('./pages/SetupPage/SetupPage'))
+// import UserPage from './pages/UserPage/UserPage'
+const UserPage = React.lazy(() => import('./pages/UserPage/UserPage'))
 
 const useTokenState = createPersistedState('token')
 const useUserState = createPersistedState('user')
