@@ -39,7 +39,7 @@ const LineChart = ({
           "tickSize": 5,
           "tickPadding": 5,
           "tickRotation": 0,
-          "legend": "March 2019",
+          "legend": "May 2019",
           "legendOffset": 55,
           "legendPosition": "middle"
         }}

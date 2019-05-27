@@ -125,7 +125,7 @@ const ReportDetail = ({
                 : <Text medium>Tidak ada keterangan yang ditambahkan oleh pelapor.</Text>
               }
               <hr/>
-              {context && context.user.role === 'dispatcher' &&
+              {
                 report.status === 'active' && (
                   <div className={cx(styles.reportAction)}>
                     <Button style={{marginRight: '12px'}} onClick={() => setInvalid(report._id)} primaryAlt>Laporan tidak benar</Button>
@@ -133,7 +133,7 @@ const ReportDetail = ({
                   </div>
                 )
               }
-              {context && context.user.role === 'dispatcher' &&
+              {
                 report.status === 'mission' && (
                   <div className={cx(styles.reportAction)}>
                     <Button style={{justifySelf: 'flex-end'}} onClick={() => setCompleted(report._id)} primary>Set completed</Button>

@@ -74,15 +74,15 @@ const SummaryPage = ({
   let [reportYearData, setReportYearData] = React.useState([])
   let [userYearData, setUserYearData] = React.useState([])
 
-  let [reportMarchData, setReportMarchData] = React.useState([])
-  let [userMarchData, setUserMarchData] = React.useState([])
+  let [reportMayData, setReportMayData] = React.useState([])
+  let [userMayData, setUserMayData] = React.useState([])
 
   React.useEffect(() => {
     let chartSchema = [...chartData]
-    chartSchema[0].data = reportMarchData ? reportMarchData : []
-    chartSchema[1].data = userMarchData ? userMarchData : []
+    chartSchema[0].data = reportMayData ? reportMayData : []
+    chartSchema[1].data = userMayData ? userMayData : []
     setChartData(chartSchema)
-  }, [reportMarchData, userMarchData])
+  }, [reportMayData, userMayData])
 
   let [jan, setJan] = React.useState()
   let [janUsers, setJanUsers] = React.useState()
@@ -333,9 +333,9 @@ const SummaryPage = ({
   let [barData, setBarData] = React.useState([])
 
   React.useEffect(() => {
-    if(marData) {
+    if(mayData) {
       setBarData(
-        marData.data.map((data, i) => ({
+        mayData.data.map((data, i) => ({
           "date": String(data.day),
           "reports": data.reports.filter(report => report.status !== 'pending' || report.status !== 'cancelled').length,
           "active": data.reports.filter(report => report.status === 'active').length,
@@ -344,25 +344,25 @@ const SummaryPage = ({
         })
       ))
     }
-  }, [marData])
+  }, [mayData])
 
   React.useEffect(() => {
-    if(marData) {
-      setReportMarchData(marData.data.map(data => ({
+    if(mayData) {
+      setReportMayData(mayData.data.map(data => ({
         "x": String(data.day),
         "y": data.amount
       })))
     }
-  }, [marData])
+  }, [mayData])
 
   React.useEffect(() => {
-    if(marUsersData) {
-      setUserMarchData(marUsersData.data.map(data => ({
+    if(mayUsersData) {
+      setUserMayData(mayUsersData.data.map(data => ({
         "x": String(data.day),
         "y": data.amount
       })))
     }
-  }, [marUsersData])
+  }, [mayUsersData])
 
   // Handle Pie-Chart Data
   let [userChartData, setUserChartData] = React.useState([])
