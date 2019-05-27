@@ -3,6 +3,7 @@ import React from 'react'
 import cx from 'classnames'
 import {Link} from 'react-router-dom'
 import {AuthContext} from './../context/context'
+import axios from 'axios'
 
 import NavbarBrand from '../NavbarBrand/NavbarBrand'
 import NavbarSecondary from '../NavbarSecondary/NavbarSecondary'
@@ -42,6 +43,9 @@ const Navbar = ({ children, className, ...restProps }) => {
         }
         {context && !context.token &&
           <Link to="/auth">
+            <Link to="/broadcasts/new" style={{marginRight: '24px'}}>
+              <Button small primary>New broadcast</Button>
+            </Link>
             <Button small primary>Sign in</Button>
           </Link>
         }

@@ -10,21 +10,13 @@ import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import SummaryPage from './pages/SummaryPage/SummaryPage'
 import BroadcastCreatePage from './pages/BroadcastCreatePage/BroadcastCreatePage'
 import ReportPage from './pages/ReportPage/ReportPage'
-
-// import ReportDetail from './components/ReportDetail/ReportDetail'
-const ReportDetail = React.lazy(() => import('./components/ReportDetail/ReportDetail'))
-// import RequestPage from './pages/RequestPage/RequestPage'
-const RequestPage = React.lazy(() => import('./pages/RequestPage/RequestPage'))
-// import UserDetail from './components/UserDetail/UserDetail'
-const UserDetail = React.lazy(() => import('./components/UserDetail/UserDetail'))
-// import BroadcastPage from './pages/BroadcastPage/BroadcastPage'
-const BroadcastPage = React.lazy(() => import('./pages/BroadcastPage/BroadcastPage'))
-// import AuthPage from './pages/AuthPage/AuthPage'
-const AuthPage = React.lazy(() => import('./pages/AuthPage/AuthPage'))
-// import SetupPage from './pages/SetupPage/SetupPage';
-const SetupPage = React.lazy(() => import('./pages/SetupPage/SetupPage'))
-// import UserPage from './pages/UserPage/UserPage'
-const UserPage = React.lazy(() => import('./pages/UserPage/UserPage'))
+import ReportDetail from './components/ReportDetail/ReportDetail'
+import RequestPage from './pages/RequestPage/RequestPage'
+import UserDetail from './components/UserDetail/UserDetail'
+import BroadcastPage from './pages/BroadcastPage/BroadcastPage'
+import AuthPage from './pages/AuthPage/AuthPage'
+import SetupPage from './pages/SetupPage/SetupPage';
+import UserPage from './pages/UserPage/UserPage'
 
 const useTokenState = createPersistedState('token')
 const useUserState = createPersistedState('user')
@@ -76,7 +68,7 @@ const App = (props) => {
               <Route exact path="/users/:id" component={UserDetail} />
               <Route exact path="/requests" component={RequestPage} />
               <Route exact path="/broadcasts" component={BroadcastPage} />
-              <PrivateRoute exact path="/broadcasts/new" component={BroadcastCreatePage} />
+              <Route exact path="/broadcasts/new" component={BroadcastCreatePage} />
 
               <Route exact path="/auth" component={AuthPage} />
               <Route exact path="/setup" component={SetupPage} />
