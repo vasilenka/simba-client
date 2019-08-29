@@ -35,7 +35,7 @@
     "invoker-layout": "^1.0.1",
     "invoker-tokens": "^1.0.12",
     "lint-staged": "^8.0.4",
-    "lodash": "^4.17.13",
+    "lodash": "^4.17.15",
     "lodash.remove": "^4.7.0",
     "moment": "^2.23.0",
     "node-sass": "^4.11.0",
