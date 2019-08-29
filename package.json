@@ -19,7 +19,7 @@
     "@nivo/pie": "^0.52.1",
     "airtable": "^0.5.8",
     "autobind-decorator": "^2.4.0",
-    "axios": "^0.18.0",
+    "axios": "^0.18.1",
     "babel-plugin-emotion": "^10.0.7",
     "chart.js": "^2.7.3",
     "classnames": "^2.2.6",
