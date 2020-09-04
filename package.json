@@ -38,7 +38,7 @@
     "lodash": "^4.17.15",
     "lodash.remove": "^4.7.0",
     "moment": "^2.23.0",
-    "node-sass": "^4.11.0",
+    "node-sass": "^4.13.1",
     "prettier": "^1.15.1",
     "prismjs": "^1.21.0",
     "react": "^16.8.3",
