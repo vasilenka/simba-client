@@ -17,7 +17,7 @@
     "@nivo/bar": "^0.52.1",
     "@nivo/line": "^0.52.1",
     "@nivo/pie": "^0.52.1",
-    "airtable": "^0.5.8",
+    "airtable": "^0.7.2",
     "autobind-decorator": "^2.4.0",
     "axios": "^0.18.1",
     "babel-plugin-emotion": "^10.0.7",
