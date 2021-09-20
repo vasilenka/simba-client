@@ -40,7 +40,7 @@
     "moment": "^2.23.0",
     "node-sass": "^4.11.0",
     "prettier": "^1.15.1",
-    "prismjs": "^1.21.0",
+    "prismjs": "^1.25.0",
     "react": "^16.8.3",
     "react-chartjs-2": "^2.7.4",
     "react-cropper-image-editor": "^1.0.0",
