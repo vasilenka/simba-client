@@ -37,7 +37,7 @@
     "lint-staged": "^8.0.4",
     "lodash": "^4.17.15",
     "lodash.remove": "^4.7.0",
-    "moment": "^2.23.0",
+    "moment": "^2.29.2",
     "node-sass": "^4.11.0",
     "prettier": "^1.15.1",
     "prismjs": "^1.21.0",
